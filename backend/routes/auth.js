@@ -38,8 +38,8 @@ router.post(
       // creating a new user
       user = User.create({
         name: req.body.name,
-        email: secPass,
-        password: req.body.password,
+        email: req.body.email,
+        password: secPass,
       });
 
       const data = {
@@ -105,14 +105,15 @@ router.post(
 
 // route3: Getting login user details Login required
 
-router.post("/api/auth/getuser", fetchUser, async (req, res) => {
+router.post("/getuser", fetchUser, async (req, res) => {
   try {
     const userId = req.user.id;
-    const user = User.findById(userId).select("-password");
+    const user = await User.findById(userId).select("-password");
+    console.log(user);
     res.send(user);
   } catch (error) {
-    console.log(error.message);
-    res.status(500).send("Internal Server Error!");
+    console.error(error.message);
+    res.status(500).send("Internal Server Errorr!");
   }
 });
 module.exports = router;
