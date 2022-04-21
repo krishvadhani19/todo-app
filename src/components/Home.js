@@ -9,13 +9,7 @@ const Home = () => {
           <label htmlFor="title" className="form-label">
             Title
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            name="title"
-            aria-describedby="emailHelp"
-          />
+          <input type="text" className="form-control" id="title" name="title" />
         </div>
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
@@ -29,7 +23,7 @@ const Home = () => {
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Add Task
         </button>
       </form>
     </div>

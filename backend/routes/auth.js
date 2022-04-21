@@ -4,7 +4,7 @@ const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwtSecret = "KrishVadhani19";
-var jwt = require("jsonwebtoken");
+var jwt = require("jsonwebtoken"); 
 const fetchUser = require("../middleware/fetchUser");
 
 // create a new user: POST "/api/auth/createnewuser" No Login required
@@ -43,7 +43,7 @@ router.post(
       });
 
       const data = {
-        user: {
+        user: { 
           id: user.id,
         },
       };
