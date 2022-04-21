@@ -84,7 +84,7 @@ router.post(
       if (!passwordCompare) {
         res
           .status(400)
-          .json({ error: "Please try again with correct credentilas!" });
+          .json({ error: "Please try again with correct credentials!" });
       }
 
       const data = {

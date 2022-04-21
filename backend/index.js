@@ -4,10 +4,10 @@ const express = require("express");
 const app = express();
 
 connectToMongo();
-const port = 3000;
+const port = 5000;
 
 // to use request body
-app.use(express.json());
+app.use(express.json()); 
 
 // Available Routes
 app.use("/api/auth", require("./routes/auth"));
