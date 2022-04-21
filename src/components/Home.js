@@ -6,13 +6,14 @@ const Home = () => {
     <div className="container">
       <form>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="title" className="form-label">
             Title
           </label>
           <input
             type="text"
             className="form-control"
-            id="exampleInputEmail1"
+            id="title"
+            name="title"
             aria-describedby="emailHelp"
           />
         </div>
