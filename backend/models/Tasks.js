@@ -1,12 +1,17 @@
 // mongoose templates that will be used by backend
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const TasksSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
   title: {
     type: String,
-    required: true, 
+    required: true,
   },
-  decription: {
+  description: {
     type: String,
     required: true,
   },

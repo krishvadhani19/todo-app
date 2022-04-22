@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const { NotBeforeError } = require("jsonwebtoken");
 const fetchUser = require("../middleware/fetchUser");
 const Task = require("../models/Tasks");
 
@@ -32,14 +31,13 @@ router.post(
     }),
   ],
   async (req, res) => {
-    const { title, description } = req.body;
     try {
+      const { title, description } = req.body;
       // if there are errors return bad request and the errors
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
-
       const task = new Task({
         title,
         description,
@@ -77,7 +75,7 @@ router.put(
       }
 
       // find task that has to be updated
-      let task = Task.findById(req.params.id);
+      let task = await Task.findById(req.params.id);
       if (!task) {
         return res.status(404).send("No such task found!");
       }
@@ -89,9 +87,10 @@ router.put(
 
       task = await Task.findByIdAndUpdate(
         req.params.id,
-        { $set: newNote },
+        { $set: newTask },
         { new: true }
       );
+      res.json({newTask})
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error!");
@@ -100,7 +99,7 @@ router.put(
 );
 
 // Route4: Delete a Task no login required
-router.delete("deletetask/:id", fetchUser, async (req, res) => {
+router.delete("/deletetask/:id", fetchUser, async (req, res) => {
   try {
     let task = await Task.findById(req.params.id);
     // if task not found
@@ -109,7 +108,7 @@ router.delete("deletetask/:id", fetchUser, async (req, res) => {
     }
 
     // Allow deletion only if user owns this task
-    if (task.user !== req.params.id) {
+    if (task.user.toString() !== req.user.id) {
       return res.status(401).send("Not Found!");
     }
 
@@ -120,3 +119,5 @@ router.delete("deletetask/:id", fetchUser, async (req, res) => {
     res.status(500).send("Internal Server Error!");
   }
 });
+
+module.exports = router;

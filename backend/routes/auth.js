@@ -9,7 +9,7 @@ const fetchUser = require("../middleware/fetchUser");
 
 // create a new user: POST "/api/auth/createnewuser" No Login required
 router.post(
-  "/createnewuser",
+  "/createnewuser", 
   [
     body("name", "Name must be atleast 3 characters").isLength({ min: 3 }),
     body("email", "Enter a valid email").isEmail(),
