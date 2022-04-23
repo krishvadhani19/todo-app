@@ -10,7 +10,7 @@ router.get("/fetchalltasks", fetchUser, async (req, res) => {
     const tasks = await Task.find({ user: req.user.id });
     res.json(tasks);
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message); 
     res.status(500).send("Internal Server Error!");
   }
 });

@@ -3,7 +3,7 @@ import Addtask from "./Addtask";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="container"> 
       <form>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
