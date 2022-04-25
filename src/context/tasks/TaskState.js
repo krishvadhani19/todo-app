@@ -56,14 +56,15 @@ const TaskState = (props) => {
   const [mode, setMode] = useState("light");
   const toggleMode = () => {
     if (mode == "light") {
-      setMode("dark");
       document.body.style.backgroundColor = "#010107";
       document.body.style.color = "#F03714";
       document.title = "todoApp - Dark Mode";
+      setMode("dark");
     } else {
       document.title = "todoApp - Dark Mode";
       document.body.style.color = "black";
       document.body.style.backgroundColor = "white";
+      setMode("light");
     }
   };
 
