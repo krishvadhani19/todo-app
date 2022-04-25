@@ -1,8 +1,21 @@
 import React from "react";
+// import "../css/Addtask.css";
+import { useContext } from "react";
+import taskContext from "../context/tasks/TaskContext";
 
 const Addtask = () => {
+  const context = useContext(taskContext);
+  const { mode } = context;
   return (
-    <div className="container my-5">
+    <div
+      className="container my-5 Addtask"
+      style={{
+        // backgroundColor: "#212529",
+        borderRadius: "5px",
+        padding: "20px",
+        boxShadow: "2px 2px 10px",
+      }}
+    >
       <form>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">

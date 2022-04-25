@@ -57,7 +57,7 @@ const TaskState = (props) => {
   const toggleMode = () => {
     if (mode == "light") {
       document.body.style.backgroundColor = "#010107";
-      document.body.style.color = "#F03714";
+      document.body.style.color = "white";
       document.title = "todoApp - Dark Mode";
       setMode("dark");
     } else {
@@ -71,6 +71,7 @@ const TaskState = (props) => {
   return (
     <TaskContext.Provider
       value={{
+        tasks,
         getTasks,
         addTask,
         deleteTask,
