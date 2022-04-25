@@ -1,12 +1,16 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext } from "react";
+import Mode from "./Mode";
+import taskContext from "../context/tasks/TaskContext";
 
 const Navbar = () => {
   let location = useLocation();
+  const context = useContext(taskContext);
+  const { mode } = context;
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             Navbar
@@ -47,6 +51,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <Mode />
         </div>
       </nav>
     </div>
