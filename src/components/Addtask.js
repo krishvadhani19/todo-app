@@ -6,19 +6,21 @@ import taskContext from "../context/tasks/TaskContext";
 const Addtask = () => {
   const context = useContext(taskContext);
   const { mode, addTask } = context;
-  const onChange = (e) => {
-    setTask({ ...task, [e.target.name]: e.target.value });
-  };
 
   const [task, setTask] = useState({ task: "", description: "" });
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     addTask(task.title, task.description);
     setTask({ title: "", description: "" });
   };
+
+  const onChange = (e) => {
+    setTask({ ...task, [e.target.name]: e.target.value });
+  };
   return (
     <div
-      className="container my-5 Addtask"
+      className={`container my-5 ${mode === "dark" ? "Addtask" : ""}`}
       style={{
         // backgroundColor: "#212529",
         borderRadius: "5px",
@@ -41,6 +43,9 @@ const Addtask = () => {
             id="title"
             name="title"
             onChange={onChange}
+            value={task.title}
+            minLength={5}
+            required
           />
         </div>
         <div className="mb-3">
@@ -57,9 +62,17 @@ const Addtask = () => {
             id="description"
             name="description"
             onChange={onChange}
+            value={task.description}
+            minLength={5}
+            required
           />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleClick}
+          // disabled={task.title.length < 5 || task.description.length < 5}
+        >
           Add Task
         </button>
       </form>

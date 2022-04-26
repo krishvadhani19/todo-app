@@ -5,11 +5,15 @@ import TaskItem from "./TaskItem";
 
 const Tasks = () => {
   const context = useContext(taskContext);
-  const { tasks, getTasks } = context;
+  const { tasks, getTasks, editTask } = context;
   useEffect(() => {
     getTasks();
     // eslint-disable-next-line
   }, []);
+
+  const refFunc = () => {
+    ref.current.click();
+  };
 
   const [task, setTask] = useState({
     id: "",
@@ -18,8 +22,12 @@ const Tasks = () => {
   });
 
   const ref = useRef(null);
+  const refClose = useRef(null);
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    editTask(task._id, task.title, task.description);
+    refClose.current.click();
+  };
 
   const onChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
@@ -57,7 +65,7 @@ const Tasks = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Modal title
+                  Edit Task
                 </h5>
                 <button
                   type="button"
@@ -96,9 +104,6 @@ const Tasks = () => {
                       onChange={onChange}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary">
-                    Add Task
-                  </button>
                 </form>
               </div>
               <div className="modal-footer">
@@ -106,6 +111,7 @@ const Tasks = () => {
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
+                  ref={refClose}
                 >
                   Close
                 </button>
@@ -129,7 +135,7 @@ const Tasks = () => {
           {tasks.length === 0 && "No Tasks to display"}
         </div>
         {tasks.map((task) => {
-          return <TaskItem key={task._id} task={task} />;
+          return <TaskItem key={task._id} task={task} refFunc={refFunc} />;
         })}
       </div>
     </div>

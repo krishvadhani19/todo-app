@@ -37,6 +37,31 @@ const TaskState = (props) => {
     setTasks(newTasks);
   };
 
+  // api call to edit a task
+  const editTask = async (id, title, description) => {
+    const response = await fetch(`${host}/api/tasks/edittask/${id}`, {
+      method: "PUT",
+      headers: {
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
+      },
+      body: JSON.stringify({ title, description }),
+    });
+    const updateTask = await response.json();
+
+    const newTasks = JSON.parse(JSON.stringify(tasks));
+
+    for (let index = 0; index < newTasks.length; index++) {
+      const element = newTasks[index];
+      if (element._id === id) {
+        element.title = updateTask.title;
+        element.description = updateTask.description;
+        break;
+      }
+    }
+    setTasks(newTasks);
+  };
+
   // api call to delete a task
   const deleteTask = async (id) => {
     const response = await fetch(`${host}/api/tasks/deletetask/${id}`, {
@@ -51,7 +76,6 @@ const TaskState = (props) => {
     });
     setTasks(newTasks);
   };
-  // api call to edit a task
 
   // Toggle Mode
   const [mode, setMode] = useState("light");
@@ -76,6 +100,7 @@ const TaskState = (props) => {
         getTasks,
         addTask,
         deleteTask,
+        editTask,
         toggleMode,
         mode,
       }}
