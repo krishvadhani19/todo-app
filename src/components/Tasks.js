@@ -45,8 +45,14 @@ const Tasks = () => {
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
+          
         >
-          <div className="modal-dialog">
+          <div className="modal-dialog" 
+          style={{
+            borderRadius: "5px",
+            padding: "20px",
+            boxShadow: "2px 2px 10px",
+          }}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">

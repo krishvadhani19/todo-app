@@ -4,12 +4,12 @@ const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwtSecret = "KrishVadhani19";
-var jwt = require("jsonwebtoken"); 
+var jwt = require("jsonwebtoken");
 const fetchUser = require("../middleware/fetchUser");
 
 // create a new user: POST "/api/auth/createnewuser" No Login required
 router.post(
-  "/createnewuser", 
+  "/createnewuser",
   [
     body("name", "Name must be atleast 3 characters").isLength({ min: 3 }),
     body("email", "Enter a valid email").isEmail(),
@@ -43,7 +43,7 @@ router.post(
       });
 
       const data = {
-        user: { 
+        user: {
           id: user.id,
         },
       };

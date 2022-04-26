@@ -10,6 +10,7 @@ const TaskState = (props) => {
   // api call to fetch all tasks
   const getTasks = async () => {
     const response = await fetch(`${host}/api/tasks/fetchalltasks`, {
+      // mode: "no-cors",
       method: "GET",
       headers: {
         "auth-token":
@@ -44,7 +45,6 @@ const TaskState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
       },
     });
-    const json = await response.json();
     const newTasks = tasks.filter((task) => {
       return task.id !== id;
     });
@@ -55,7 +55,7 @@ const TaskState = (props) => {
   // Toggle Mode
   const [mode, setMode] = useState("light");
   const toggleMode = () => {
-    if (mode == "light") {
+    if (mode === "light") {
       document.body.style.backgroundColor = "#010107";
       document.body.style.color = "white";
       document.title = "todoApp - Dark Mode";
