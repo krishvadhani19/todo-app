@@ -45,14 +45,15 @@ const Tasks = () => {
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
-          
         >
-          <div className="modal-dialog" 
-          style={{
-            borderRadius: "5px",
-            padding: "20px",
-            boxShadow: "2px 2px 10px",
-          }}>
+          <div
+            className="modal-dialog"
+            style={{
+              borderRadius: "5px",
+              padding: "20px",
+              boxShadow: "2px 2px 10px",
+            }}
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -124,11 +125,11 @@ const Tasks = () => {
         </div>
       </div>
       <div className="row my-3">
-        <div className="container mx-2">
+        <div className={`container mx-2 ${tasks.length !== 0 ? "d-none" : ""}`}>
           {tasks.length === 0 && "No Tasks to display"}
         </div>
         {tasks.map((task) => {
-          return <TaskItem key={task.id} task={task} />;
+          return <TaskItem key={task._id} task={task} />;
         })}
       </div>
     </div>

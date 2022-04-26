@@ -46,7 +46,7 @@ const TaskState = (props) => {
       },
     });
     const newTasks = tasks.filter((task) => {
-      return task.id !== id;
+      return task._id !== id;
     });
     setTasks(newTasks);
   };
