@@ -10,10 +10,13 @@ const Navbar = () => {
   const { mode } = context;
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
+      <nav
+        className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}
+        style={{ fontSize: "20px" }}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Navbar
+            <strong>todoApp</strong>
           </a>
           <button
             className="navbar-toggler"

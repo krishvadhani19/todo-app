@@ -22,7 +22,7 @@ const TaskState = (props) => {
   };
 
   // api call to add a task
-  const addTask = async () => {
+  const addTask = async (title, description) => {
     const response = await fetch(`${host}/api/tasks/addtask`, {
       method: "POST",
       headers: {
@@ -30,6 +30,7 @@ const TaskState = (props) => {
         "auth-token":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
       },
+      body: JSON.stringify({ title, description }),
     });
     const json = await response.json();
     let newTasks = [tasks.concat(json)];
