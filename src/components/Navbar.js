@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import Mode from "./Mode";
 import taskContext from "../context/tasks/TaskContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
@@ -55,6 +56,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Mode />
+          <form className="d-flex">
+            <Link className="btn btn-primary ms-4" to="/login">
+              Login
+            </Link>
+            <Link className="btn btn-primary mx-2" to="/signup">
+              Signup
+            </Link>
+          </form>
         </div>
       </nav>
     </div>

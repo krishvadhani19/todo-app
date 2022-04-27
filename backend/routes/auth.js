@@ -68,6 +68,7 @@ router.post(
     }),
   ],
   async (req, res) => {
+    let success = false;
     // if there are errors return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -77,14 +78,19 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        res.status(400).json({ error: "Sorry no user with this email exist!" });
+        res
+          .status(400)
+          .json({ success, error: "Sorry no user with this email exist!" });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
         res
           .status(400)
-          .json({ error: "Please try again with correct credentials!" });
+          .json({
+            success,
+            error: "Please try again with correct credentials!",
+          });
       }
 
       const data = {
@@ -94,8 +100,8 @@ router.post(
       };
 
       const authToken = jwt.sign(data, jwtSecret);
-
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Internal Server Error!");

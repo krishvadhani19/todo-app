@@ -1,20 +1,22 @@
 import React from "react";
 import taskContext from "../context/tasks/TaskContext";
 import { useContext } from "react";
-import "../css/TaskItem.css";
+// import "../css/TaskItem.css";
 
 const TaskItem = (props) => {
   const context = useContext(taskContext);
   const { deleteTask, mode } = context;
   const { task, refFunc } = props;
   return (
-    <div className={`col-md-3 ${mode === "light" ? "TaskItem" : " "}`}>
+    <div className={`col-md-3 `}>
       <div
         className="card my-3 d-flex"
         style={{
           borderRadius: "5px",
           boxShadow: "2px 2px 10px",
           width: "18rem",
+          color: "white",
+          backgroundColor: "#212529",
         }}
       >
         <div

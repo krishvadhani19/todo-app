@@ -42,6 +42,7 @@ const TaskState = (props) => {
     const response = await fetch(`${host}/api/tasks/edittask/${id}`, {
       method: "PUT",
       headers: {
+        "Content-Type": "application/json",
         "auth-token":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
       },
@@ -54,8 +55,8 @@ const TaskState = (props) => {
     for (let index = 0; index < newTasks.length; index++) {
       const element = newTasks[index];
       if (element._id === id) {
-        element.title = updateTask.title;
-        element.description = updateTask.description;
+        element.title = title;
+        element.description = description;
         break;
       }
     }
@@ -77,16 +78,18 @@ const TaskState = (props) => {
     setTasks(newTasks);
   };
 
+  // api call for login
+
   // Toggle Mode
   const [mode, setMode] = useState("light");
   const toggleMode = () => {
     if (mode === "light") {
-      document.body.style.backgroundColor = "#010107";
+      document.body.style.backgroundColor = "#212529";
       document.body.style.color = "white";
       document.title = "todoApp - Dark Mode";
       setMode("dark");
     } else {
-      document.title = "todoApp - Dark Mode";
+      document.title = "todoApp - Light Mode";
       document.body.style.color = "black";
       document.body.style.backgroundColor = "white";
       setMode("light");
@@ -105,8 +108,7 @@ const TaskState = (props) => {
         mode,
       }}
     >
-      {" "}
-      {props.children}{" "}
+      {props.children}
     </TaskContext.Provider>
   );
 };

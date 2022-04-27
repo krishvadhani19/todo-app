@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 
 const Tasks = () => {
   const context = useContext(taskContext);
-  const { tasks, getTasks, editTask } = context;
+  const { tasks, getTasks, editTask, mode } = context;
   useEffect(() => {
     getTasks();
     // eslint-disable-next-line
@@ -26,6 +26,7 @@ const Tasks = () => {
 
   const handleClick = () => {
     editTask(task._id, task.title, task.description);
+    console.log(task._id);
     refClose.current.click();
   };
 
@@ -62,7 +63,11 @@ const Tasks = () => {
               boxShadow: "2px 2px 10px",
             }}
           >
-            <div className="modal-content">
+            <div
+              className={`modal-content bg-${
+                mode === "dark" ? "dark" : "light"
+              }`}
+            >
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                   Edit Task
