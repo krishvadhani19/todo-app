@@ -30,7 +30,7 @@ const Addtask = () => {
           boxShadow: "2px 2px 10px",
         }}
       >
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-3">
             <label
               htmlFor="title"
@@ -73,6 +73,7 @@ const Addtask = () => {
             // disabled={task.title.length < 5 || task.description.length < 5}
             type="submit"
             className="btn btn-primary"
+            onClick={handleSubmit}
           >
             Add Task
           </button>
