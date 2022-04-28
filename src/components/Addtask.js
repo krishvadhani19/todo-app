@@ -9,7 +9,7 @@ const Addtask = () => {
 
   const [task, setTask] = useState({ task: "", description: "" });
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task.title, task.description);
     setTask({ title: "", description: "" });
@@ -22,7 +22,7 @@ const Addtask = () => {
   return (
     <div className="container my-3">
       <div
-        className={`my-5 ${mode === "dark" ? "Addtask" : " "}`}
+        className={`my-5`}
         style={{
           // backgroundColor: "#212529",
           borderRadius: "5px",
@@ -30,7 +30,7 @@ const Addtask = () => {
           boxShadow: "2px 2px 10px",
         }}
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label
               htmlFor="title"
@@ -73,7 +73,6 @@ const Addtask = () => {
             // disabled={task.title.length < 5 || task.description.length < 5}
             type="submit"
             className="btn btn-primary"
-            onClick={handleClick}
           >
             Add Task
           </button>

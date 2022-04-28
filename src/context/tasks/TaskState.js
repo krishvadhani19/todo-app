@@ -13,8 +13,7 @@ const TaskState = (props) => {
       // mode: "no-cors",
       method: "GET",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
+        "auth-token": localStorage.getItem("token"),
       },
     });
     const json = await response.json();
@@ -27,8 +26,7 @@ const TaskState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
+        "auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description }),
     });
@@ -43,14 +41,13 @@ const TaskState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
+        "auth-token": localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description }),
     });
     const updateTask = await response.json();
 
-    const newTasks = JSON.parse(JSON.stringify(tasks));
+    const newTasks = await JSON.parse(JSON.stringify(tasks));
 
     for (let index = 0; index < newTasks.length; index++) {
       const element = newTasks[index];
@@ -68,8 +65,7 @@ const TaskState = (props) => {
     const response = await fetch(`${host}/api/tasks/deletetask/${id}`, {
       method: "DELETE",
       headers: {
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI1ZmVjZTVjMzkzMjlmZmNjZTQyMzVhIn0sImlhdCI6MTY1MDYwODEyM30.JyMNfN6QVe5gN0THidsL7Yel_VrxaKnJ3DgnCjls40o",
+        "auth-token": localStorage.getItem("token"),
       },
     });
     const newTasks = tasks.filter((task) => {

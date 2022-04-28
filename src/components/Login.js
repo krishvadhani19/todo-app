@@ -27,10 +27,11 @@ const Login = () => {
       setCredentials({ email: "", password: "" });
       localStorage.setItem("token", json.authToken);
       navigate("/");
-      //
     } else {
+      navigate("/login");
       alert("Invalid Credentials");
       setCredentials({ email: "", password: "" });
+      navigate("/login");
     }
   };
   return (
@@ -57,6 +58,7 @@ const Login = () => {
             aria-describedby="emailHelp"
             value={credentials.email}
             onChange={onChange}
+            required
           />
         </div>
         <div className="mb-3">
@@ -70,10 +72,16 @@ const Login = () => {
             name="password"
             value={credentials.password}
             onChange={onChange}
+            required
+            minLength={5}
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button
+          type="submit"
+          disabled={credentials.password.length < 5}
+          className="btn btn-primary"
+        >
           Submit
         </button>
       </form>

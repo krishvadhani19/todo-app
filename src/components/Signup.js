@@ -38,6 +38,7 @@ const Signup = () => {
       navigate("/");
       localStorage.setItem("token", json.authToken);
     } else {
+      navigate("/signup");
       setCredentials({ name: "", email: "", password: "", cpassword: "" });
     }
   };
@@ -65,6 +66,7 @@ const Signup = () => {
             aria-describedby="emailHelp"
             onChange={onChange}
             value={credentials.name}
+            required
           />
         </div>
         <div className="mb-3">
@@ -79,6 +81,7 @@ const Signup = () => {
             aria-describedby="emailHelp"
             onChange={onChange}
             value={credentials.email}
+            required
           />
         </div>
         <div className="mb-3">
@@ -92,6 +95,8 @@ const Signup = () => {
             name="password"
             onChange={onChange}
             value={credentials.password}
+            required
+            minLength={5}
           />
         </div>
         <div className="mb-3">
@@ -105,9 +110,17 @@ const Signup = () => {
             name="cpassword"
             onChange={onChange}
             value={credentials.cpassword}
+            required
+            minLength={5}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button
+          disabled={
+            credentials.password.length < 5 || credentials.cpassword.length < 5
+          }
+          type="submit"
+          className="btn btn-primary"
+        >
           Submit
         </button>
       </form>

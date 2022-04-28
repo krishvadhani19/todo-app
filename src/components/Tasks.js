@@ -2,17 +2,28 @@ import React from "react";
 import { useContext, useEffect, useRef, useState } from "react";
 import taskContext from "../context/tasks/TaskContext";
 import TaskItem from "./TaskItem";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
+  let navigate = useNavigate();
   const context = useContext(taskContext);
   const { tasks, getTasks, editTask, mode } = context;
   useEffect(() => {
-    getTasks();
-    // eslint-disable-next-line
+    if (localStorage.getItem("token")) {
+      // eslint-disable-next-line
+      getTasks();
+    } else {
+      navigate("/login");
+    }
   }, []);
 
-  const refFunc = () => {
+  const refFunc = (taskItem) => {
     ref.current.click();
+    setTask({
+      id: taskItem._id,
+      title: taskItem.title,
+      description: taskItem.description,
+    });
   };
 
   const [task, setTask] = useState({
@@ -25,8 +36,8 @@ const Tasks = () => {
   const refClose = useRef(null);
 
   const handleClick = () => {
-    editTask(task._id, task.title, task.description);
-    console.log(task._id);
+    editTask(task.id, task.title, task.description);
+    console.log(task.id);
     refClose.current.click();
   };
 
@@ -94,6 +105,7 @@ const Tasks = () => {
                       name="title"
                       value={task.title}
                       onChange={onChange}
+                      required
                     />
                   </div>
                   <div className="mb-3">
@@ -107,6 +119,7 @@ const Tasks = () => {
                       name="description"
                       value={task.description}
                       onChange={onChange}
+                      required
                     />
                   </div>
                 </form>
@@ -123,10 +136,10 @@ const Tasks = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={handleClick}
                   disabled={
                     task.title.length < 5 || task.description.length < 5
                   }
+                  onClick={handleClick}
                 >
                   Save changes
                 </button>

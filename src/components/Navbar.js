@@ -4,8 +4,15 @@ import { useContext } from "react";
 import Mode from "./Mode";
 import taskContext from "../context/tasks/TaskContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   let location = useLocation();
   const context = useContext(taskContext);
   const { mode } = context;
@@ -56,14 +63,26 @@ const Navbar = () => {
             </ul>
           </div>
           <Mode />
-          <form className="d-flex">
-            <Link className="btn btn-primary ms-4" to="/login">
-              Login
-            </Link>
-            <Link className="btn btn-primary mx-2" to="/signup">
-              Signup
-            </Link>
-          </form>
+          {localStorage.getItem("token") ? (
+            <form className="d-flex">
+              <Link
+                className="btn btn-primary ms-4"
+                to="/login"
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            </form>
+          ) : (
+            <form className="d-flex">
+              <Link className="btn btn-primary ms-4" to="/login">
+                Login
+              </Link>
+              <Link className="btn btn-primary mx-2" to="/signup">
+                Signup
+              </Link>
+            </form>
+          )}
         </div>
       </nav>
     </div>

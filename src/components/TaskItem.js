@@ -23,7 +23,10 @@ const TaskItem = (props) => {
           className="card-body d-flex"
           style={{ justifyContent: "space-between" }}
         >
-          <h5 className="card-title" style={{ fontSize: "25px" }}>
+          <h5
+            className="card-title"
+            style={{ fontSize: "25px", width: "190px" }}
+          >
             {task.title}
           </h5>
           <div style={{ cursor: "pointer" }}>
@@ -36,7 +39,7 @@ const TaskItem = (props) => {
             <i
               className="fa-solid fa-pen mx-2 my-2"
               onClick={() => {
-                refFunc();
+                refFunc(task);
               }}
             ></i>
           </div>

@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const About = () => {
-  return (
-    <div>About</div>
-  )
-}
+  let navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      return <div className="container">About</div>;
+    }
+  }, []);
+};
 
-export default About
+export default About;
