@@ -1,11 +1,10 @@
 import React from "react";
 import taskContext from "../context/tasks/TaskContext";
 import { useContext } from "react";
-// import "../css/TaskItem.css";
 
 const TaskItem = (props) => {
   const context = useContext(taskContext);
-  const { deleteTask, mode } = context;
+  const { deleteTask } = context;
   const { task, refFunc } = props;
   return (
     <div className={`col-md-3 `}>

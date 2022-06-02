@@ -16,7 +16,7 @@ const TaskState = (props) => {
         "auth-token": localStorage.getItem("token"),
       },
     });
-    const json = await response.json();
+    const json = [await response.json()];
     setTasks(json);
   };
 

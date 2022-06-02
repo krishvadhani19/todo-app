@@ -9,7 +9,7 @@ const Addtask = () => {
 
   const [task, setTask] = useState({ task: "", description: "" });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { 
     e.preventDefault();
     addTask(task.title, task.description);
     setTask({ title: "", description: "" });

@@ -10,7 +10,7 @@ const Tasks = () => {
   const { tasks, getTasks, editTask, mode } = context;
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      // eslint-disable-next-line
+      // eslint-disable-next-line 
       getTasks();
     } else {
       navigate("/login");
