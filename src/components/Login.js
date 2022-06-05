@@ -7,7 +7,6 @@ const Login = () => {
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,63 +27,49 @@ const Login = () => {
       localStorage.setItem("token", json.authToken);
       navigate("/");
     } else {
-      navigate("/");
+      navigate("/login");
       alert("Invalid Credentials");
       setCredentials({ email: "", password: "" });
     }
   };
+
+  const navigate = useNavigate();
+
   return (
-    <div
-      className="m-5"
-      style={{
-        // backgroundColor: "#212529",
-        borderRadius: "5px",
-        padding: "20px",
-        boxShadow: "2px 2px 10px",
-        fontSize: "19px",
-      }}
-    >
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
+    <>
+      <div className="flex justify-center bg-slate-900 text-white py-3 h-full">
+        <label className=" bg-slate-800 mb-3 p-4 lg:w-2/3 w-full mx-6 rounded-lg">
+          <div className="text-center text-5xl mb-4 font-bold"> Login </div>
           <input
             type="email"
-            className="form-control"
             id="email"
             name="email"
-            aria-describedby="emailHelp"
             value={credentials.email}
+            className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+            placeholder="you@example.com"
             onChange={onChange}
-            required
+            minLength={5}
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
           <input
             type="password"
-            className="form-control"
             id="password"
             name="password"
             value={credentials.password}
+            className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+            placeholder="Enter Password"
             onChange={onChange}
-            required
             minLength={5}
           />
-        </div>
-
-        <button
-          type="submit"
-          disabled={credentials.password.length < 5}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+          <div
+            className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 border-2 rounded-md px-3 py-1 text-lg text-center inline-block"
+            onClick={handleSubmit}
+            type="submit"
+          >
+            Submit
+          </div>
+        </label>
+      </div>
+    </>
   );
 };
 

@@ -7,7 +7,6 @@ import Home from "./components/Home";
 import TaskState from "./context/tasks/TaskState";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Addtask1 from "./components/Addtask1";
 
 function App() {
   return (
@@ -29,8 +28,6 @@ function App() {
             <Route exact path="/login" element={<Login />}></Route>
             {/* Signup */}
             <Route exact path="/signup" element={<Signup />}></Route>
-            {/* Addtask1 */}
-            <Route exact path="/addtask" element={<Addtask1 />}></Route>
           </Routes>
         </Router>
       </TaskState>

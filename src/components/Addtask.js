@@ -1,10 +1,11 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import taskContext from "../context/tasks/TaskContext";
+import { useState } from "react";
 
 const Addtask = () => {
   const context = useContext(taskContext);
-  const { mode, addTask } = context;
+  const { addTask } = context;
 
   const [task, setTask] = useState({ title: "", description: "" });
 
@@ -12,71 +13,46 @@ const Addtask = () => {
     e.preventDefault();
     addTask(task.title, task.description);
     setTask({ title: "", description: "" });
-    console.log(task.title);
   };
 
   const onChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
   return (
-    <div className="container my-3">
-      <div
-        className={`my-5`}
-        style={{
-          borderRadius: "5px",
-          padding: "20px",
-          boxShadow: "2px 2px 10px",
-        }}
-      >
-        <form>
-          <div className="mb-3">
-            <label
-              htmlFor="title"
-              className="form-label"
-              style={{ fontSize: "19px" }}
-            >
-              <strong>Title</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              name="title"
-              onChange={onChange}
-              value={task.title}
-              minLength={5}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label
-              htmlFor="description"
-              className="form-label"
-              style={{ fontSize: "19px" }}
-            >
-              <strong>Description</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              name="description"
-              onChange={onChange}
-              value={task.description}
-              minLength={5}
-              required
-            />
-          </div>
-          <button
-            // disabled={task.title.length < 5 || task.description.length < 5}
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
-            Add Task
-          </button>
-        </form>
-      </div>
+    <div className="bg-slate-900 p-2 flex justify-center">
+      <label className="my-3 p-3 shadow-lg rounded-lg bg-slate-800 block mx-6 w-full lg:w-2/3">
+        <div className="text-white font-bold text-5xl mb-4 text-center">
+          Add Task
+        </div>
+        <input
+          type="text"
+          className=" p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+          placeholder="Enter Title"
+          id="title"
+          name="title"
+          onChange={onChange}
+          minLength={5}
+          value={task.title}
+        />
+        <textarea
+          type="text"
+          className="p-2 rounded-md w-full h-36 bg-slate-600 text-white 
+          resize-none mb-4"
+          id="description"
+          name="description"
+          placeholder="Enter Description"
+          onChange={onChange}
+          value={task.description}
+          minLength={5}
+        />
+        <div
+          className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 py-1block text-lg inline-block "
+          onClick={handleSubmit}
+          type="submit"
+        >
+          Add Task
+        </div>
+      </label>
     </div>
   );
 };

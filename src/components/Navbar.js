@@ -22,7 +22,7 @@ const Navbar = () => {
           <div className="font-extrabold mx-2">
             <a
               href="/"
-              className="rounded-sm bg-gradient-to-r from-sky-300 via-fuchsia-300 to-sky-300 align-middle hover:text-slate-900"
+              className="rounded-sm text-white align-middle hover:text-slate-900"
             >
               todoApp
             </a>
@@ -63,13 +63,13 @@ const Navbar = () => {
             <div className="flex font-normal">
               <Link
                 to="/login"
-                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1"
+                className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
+                className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
               >
                 Signup
               </Link>
