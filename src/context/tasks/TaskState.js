@@ -77,10 +77,10 @@ const TaskState = (props) => {
   // api call for login
 
   // Toggle Mode
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
   const toggleMode = () => {
     if (mode === "light") {
-      document.body.style.backgroundColor = "#212529";
+      document.body.style.backgroundColor = "";
       document.body.style.color = "white";
       document.title = "todoApp - Dark Mode";
       setMode("dark");

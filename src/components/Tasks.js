@@ -10,7 +10,7 @@ const Tasks = () => {
   const { tasks, getTasks, editTask, mode } = context;
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      // eslint-disable-next-line 
+      // eslint-disable-next-line
       getTasks();
     } else {
       navigate("/login");
@@ -149,7 +149,7 @@ const Tasks = () => {
         </div>
       </div>
       <div className="row my-3">
-        <div className={`container mx-2 ${tasks.length !== 0 ? "d-none" : ""}`}>
+        <div className={`mx-2 ${tasks.length !== 0 ? "d-none" : ""}`}>
           {tasks.length === 0 && "No Tasks to display"}
         </div>
         {tasks.map((task) => {

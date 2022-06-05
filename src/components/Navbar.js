@@ -1,10 +1,9 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { useContext } from "react";
-import Mode from "./Mode";
 import taskContext from "../context/tasks/TaskContext";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -17,75 +16,68 @@ const Navbar = () => {
   const context = useContext(taskContext);
   const { mode } = context;
   return (
-    <div>
-      <nav
-        className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}
-        style={{ fontSize: "20px" }}
-      >
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            <strong>todoApp</strong>
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a
-                  className={`nav-link ${
-                    location.pathname === "/" ? "active" : ""
-                  }`}
-                  aria-current="page"
-                  href="/"
-                >
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link ${
-                    location.pathname === "/about" ? "active" : ""
-                  }`}
-                  href="/about"
-                >
-                  About
-                </a>
-              </li>
-            </ul>
+    <>
+      <div className="flex text-xl bg-slate-900  px-5 py-3 justify-between">
+        <div className="flex flex-col lg:flex-row ">
+          <div className="font-extrabold mx-2">
+            <a
+              href="/"
+              className="rounded-sm bg-gradient-to-r from-sky-300 via-fuchsia-300 to-sky-300 align-middle hover:text-slate-900"
+            >
+              todoApp
+            </a>
           </div>
-          <Mode />
+          <div className="mx-2 font-medium">
+            <a
+              href="/"
+              className={`hover:text-sky-300 align-middle ${
+                location.pathname === "/" ? "text-sky-300" : "text-sky-600"
+              }`}
+            >
+              Home
+            </a>
+          </div>
+          <div className="mx-2 font-medium">
+            <a
+              href="/about"
+              className={`hover:text-sky-300 align-middle ${
+                location.pathname === "/about" ? "text-sky-300" : "text-sky-600"
+              }`}
+            >
+              About
+            </a>
+          </div>
+        </div>
+        <div className="">
           {localStorage.getItem("token") ? (
-            <form className="d-flex">
+            <div className="flex font-medium">
               <Link
-                className="btn btn-primary ms-4"
                 to="/login"
                 onClick={handleLogout}
+                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
               >
                 Logout
               </Link>
-            </form>
+            </div>
           ) : (
-            <form className="d-flex">
-              <Link className="btn btn-primary ms-4" to="/login">
+            <div className="flex font-normal">
+              <Link
+                to="/login"
+                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1"
+              >
                 Login
               </Link>
-              <Link className="btn btn-primary mx-2" to="/signup">
+              <Link
+                to="/signup"
+                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
+              >
                 Signup
               </Link>
-            </form>
+            </div>
           )}
         </div>
-      </nav>
-    </div>
+      </div>
+    </>
   );
 };
 

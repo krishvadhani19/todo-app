@@ -7,7 +7,7 @@ const TaskItem = (props) => {
   const { deleteTask } = context;
   const { task, refFunc } = props;
   return (
-    <div className={`col-md-3 `}>
+    <div className={`col-md-3`}>
       <div
         className="card my-3 d-flex"
         style={{

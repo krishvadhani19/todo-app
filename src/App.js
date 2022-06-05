@@ -4,11 +4,10 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Home from "./components/Home";
-import Alert from "./components/Alert";
 import TaskState from "./context/tasks/TaskState";
-import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Addtask1 from "./components/Addtask1";
 
 function App() {
   return (
@@ -24,16 +23,15 @@ function App() {
           <Routes>
             {/* Home */}
             <Route exact path="/" element={<Home />}></Route>
-
             {/* About */}
             <Route exact path="/about" element={<About />}></Route>
             {/* Login */}
             <Route exact path="/login" element={<Login />}></Route>
             {/* Signup */}
             <Route exact path="/signup" element={<Signup />}></Route>
+            {/* Addtask1 */}
+            <Route exact path="/addtask" element={<Addtask1 />}></Route>
           </Routes>
-          {/* Footer */}
-          <Footer />
         </Router>
       </TaskState>
     </>

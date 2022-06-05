@@ -1,5 +1,4 @@
 import React from "react";
-// import "../css/Addtask.css";
 import { useContext, useState } from "react";
 import taskContext from "../context/tasks/TaskContext";
 
@@ -7,9 +6,9 @@ const Addtask = () => {
   const context = useContext(taskContext);
   const { mode, addTask } = context;
 
-  const [task, setTask] = useState({ task: "", description: "" });
+  const [task, setTask] = useState({ title: "", description: "" });
 
-  const handleSubmit = (e) => { 
+  const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task.title, task.description);
     setTask({ title: "", description: "" });
@@ -24,7 +23,6 @@ const Addtask = () => {
       <div
         className={`my-5`}
         style={{
-          // backgroundColor: "#212529",
           borderRadius: "5px",
           padding: "20px",
           boxShadow: "2px 2px 10px",

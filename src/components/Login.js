@@ -28,15 +28,14 @@ const Login = () => {
       localStorage.setItem("token", json.authToken);
       navigate("/");
     } else {
-      navigate("/login");
+      navigate("/");
       alert("Invalid Credentials");
       setCredentials({ email: "", password: "" });
-      navigate("/login");
     }
   };
   return (
     <div
-      className="container my-5"
+      className="m-5"
       style={{
         // backgroundColor: "#212529",
         borderRadius: "5px",
