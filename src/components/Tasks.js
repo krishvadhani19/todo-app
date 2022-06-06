@@ -16,6 +16,9 @@ const Tasks = () => {
       navigate("/login");
     }
   }, []);
+  
+  const refClose = useRef(null);
+  const ref = useRef(null);
 
   const refFunc = (taskItem) => {
     ref.current.click();
@@ -32,9 +35,6 @@ const Tasks = () => {
     description: "",
   });
 
-  const ref = useRef(null);
-  const refClose = useRef(null);
-
   const handleClick = () => {
     editTask(task.id, task.title, task.description);
     console.log(task.id);
@@ -46,8 +46,8 @@ const Tasks = () => {
   };
 
   return (
-    <div className="container my-5">
-      <h2>Your Tasks!</h2>
+    <div className="container bg-slate-900 text-white">
+      <div className="text-5xl text-center font-bold">Your Tasks!</div>
       <div>
         <button
           type="button"

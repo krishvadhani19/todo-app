@@ -37,8 +37,8 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex justify-center bg-slate-900 text-white py-3 h-full">
-        <label className=" bg-slate-800 mb-3 p-4 lg:w-2/3 w-full mx-6 rounded-lg">
+      <div className="flex justify-center bg-slate-900 text-white py-3 h-screen">
+        <label className=" bg-slate-800 mb-3 p-4 lg:w-2/3 w-full mx-6 rounded-lg h-[42%]">
           <div className="text-center text-5xl mb-4 font-bold"> Login </div>
           <input
             type="email"

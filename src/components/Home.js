@@ -4,10 +4,10 @@ import Tasks from "./Tasks";
 
 const Home = () => {
   return (
-    <>
+    <div className="h-screen bg-slate-900">
       <Addtask />
-      <Tasks/> 
-    </>
+      <Tasks />
+    </div>
   );
 };
 

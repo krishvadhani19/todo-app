@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  let navigate = useNavigate();
-
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -43,87 +42,59 @@ const Signup = () => {
     }
   };
   return (
-    <div
-      className="m-5"
-      style={{
-        // backgroundColor: "#212529",
-        borderRadius: "5px",
-        padding: "20px",
-        boxShadow: "2px 2px 10px",
-        fontSize: "19px",
-      }}
-    >
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-            value={credentials.name}
-            required
-          />
+    <div className="flex justify-center bg-slate-900 text-white py-3 h-screen">
+      <label className="bg-slate-800 mb-3 p-4 lg:w-2/3 w-full mx-6 rounded-lg h-[65%]">
+        <div className="text-center text-5xl mb-4 font-bold text-white">
+          Sign up
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email Address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-            value={credentials.email}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            onChange={onChange}
-            value={credentials.password}
-            required
-            minLength={5}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="cpassword"
-            name="cpassword"
-            onChange={onChange}
-            value={credentials.cpassword}
-            required
-            minLength={5}
-          />
-        </div>
-        <button
-          disabled={
-            credentials.password.length < 5 || credentials.cpassword.length < 5
-          }
+        <input
+          type="text"
+          className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+          placeholder="Enter Full Name"
+          value={credentials.name}
+          id="name"
+          name="name"
+          onChange={onChange}
+          required
+        />
+        <input
+          type="email"
+          className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+          placeholder="Enter Email"
+          value={credentials.email}
+          id="email"
+          name="email"
+          onChange={onChange}
+          required
+        />
+        <input
+          type="password"
+          className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+          placeholder="Enter Password"
+          value={credentials.password}
+          id="password"
+          name="password"
+          onChange={onChange}
+          required
+        />
+        <input
+          type="password"
+          className="p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
+          placeholder="Confirm Password"
+          value={credentials.cpassword}
+          id="cpassword"
+          name="cpassword"
+          onChange={onChange}
+          required
+        />
+        <div
+          className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 border-2 rounded-md px-3 py-1 text-lg inline-block"
+          onClick={handleSubmit}
           type="submit"
-          className="btn btn-primary"
         >
           Submit
-        </button>
-      </form>
+        </div>
+      </label>
     </div>
   );
 };

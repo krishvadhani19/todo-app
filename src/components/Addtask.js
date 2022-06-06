@@ -50,7 +50,7 @@ const Addtask = () => {
           onClick={handleSubmit}
           type="submit"
         >
-          Add Task
+          ADD +
         </div>
       </label>
     </div>
