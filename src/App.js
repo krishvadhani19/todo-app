@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import React from "react";
-import Navbar from "./components/Navbar";
-import About from "./components/About";
-import Home from "./components/Home";
-import TaskState from "./context/tasks/TaskState";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import Navbar from "components/Utils/Navbar";
+import About from "components/About";
+import Home from "components/Home";
+import TaskState from "context/tasks/TaskState";
+import Login from "components/Authentication/Login/Login";
+import Signup from "components/Authentication/Signup";
 
 function App() {
   return (

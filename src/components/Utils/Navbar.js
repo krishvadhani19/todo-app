@@ -1,8 +1,6 @@
-import React from "react";
-import taskContext from "./../context/tasks/taskContext";
-import { useContext } from "react";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import taskContext from "../../context/tasks/taskContext";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -14,11 +12,12 @@ const Navbar = () => {
 
   let location = useLocation();
   const context = useContext(taskContext);
-  const { mode } = context;
+  const {} = context;
   return (
     <>
-      <div className="flex text-xl bg-slate-900  px-5 py-3 justify-between">
+      <div className="flex text-xl bg-dark-100  px-5 py-3 justify-between w-full">
         <div className="flex flex-col lg:flex-row ">
+          {/* Logo */}
           <div className="font-extrabold mx-2">
             <a
               href="/"
@@ -27,6 +26,8 @@ const Navbar = () => {
               todoApp
             </a>
           </div>
+
+          {/* Home */}
           <div className="mx-2 font-medium">
             <a
               href="/"
@@ -37,6 +38,8 @@ const Navbar = () => {
               Home
             </a>
           </div>
+
+          {/* About */}
           <div className="mx-2 font-medium">
             <a
               href="/about"
@@ -48,8 +51,11 @@ const Navbar = () => {
             </a>
           </div>
         </div>
+
+        {/* Login & Logout */}
         <div className="">
           {localStorage.getItem("token") ? (
+            // Logout
             <div className="flex font-medium">
               <Link
                 to="/login"
@@ -60,6 +66,7 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
+            // Login & Sign Up
             <div className="flex font-normal">
               <Link
                 to="/login"
