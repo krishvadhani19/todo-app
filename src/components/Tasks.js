@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useEffect, useRef, useState } from "react";
-import taskContext from "../context/tasks/TaskContext";
+import taskContext from "./../context/tasks/taskContext";
 import TaskItem from "./TaskItem";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const Tasks = () => {
       navigate("/login");
     }
   }, []);
-  
+
   const refClose = useRef(null);
   const ref = useRef(null);
 
