@@ -1,18 +1,27 @@
 import React from "react";
 import LeftLogin from "components/Authentication/Login/LeftLogin";
 import RightLogin from "components/Authentication/Login/RightLogin";
+import Navbar from "components/Utils/Navbar";
 
 const Login = () => {
   return (
-    <div className="flex flex-row">
-      {/* Left Side */}
-      <div className="flex bg-dark-100 text-white py-3 h-screen w-[55%]">
-        <LeftLogin />
+    <div className="relative bg-dark-100 font-body-primary">
+      {/* Navabr */}
+      <div className="fixed w-[55%]">
+        <Navbar />
       </div>
 
-      {/* Right Side */}
-      <div className="w-[45%] h-full relative">
-        <RightLogin />
+      {/* Login */}
+      <div className="flex flex-row">
+        {/* Left Side */}
+        <div className="flex text-white py-3 h-screen w-[55%] mt-24">
+          <LeftLogin />
+        </div>
+
+        {/* Right Side */}
+        <div className="w-[45%] h-full relative">
+          <RightLogin />
+        </div>
       </div>
     </div>
   );

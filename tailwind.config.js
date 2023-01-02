@@ -23,8 +23,12 @@ module.exports = {
         // primary
         "primary-blue": "#0284C7",
         "secondary-blue": "#0369A1",
+        "bright-blue": "#38BDF8",
       },
-      fontFamily: {},
+      fontFamily: {
+        "head-primary": ["Pacifico"],
+        "body-primary": ["Ubuntu"],
+      },
 
       screens: {
         sm: "640px",

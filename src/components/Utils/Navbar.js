@@ -15,15 +15,15 @@ const Navbar = () => {
   const {} = context;
   return (
     <>
-      <div className="flex text-xl bg-dark-100  px-5 py-3 justify-between w-full">
-        <div className="flex flex-col lg:flex-row ">
+      <div className="flex justify-between text-xl bg-dark-100  px-5 py-3 w-full">
+        <div className="flex flex-row justify-between w-[70%]">
           {/* Logo */}
           <div className="font-extrabold mx-2">
             <a
               href="/"
-              className="rounded-sm text-white align-middle hover:text-slate-900"
+              className="rounded-sm text-white hover:text-slate-900 font-head-primary text-3xl"
             >
-              todoApp
+              todoApp.
             </a>
           </div>
 
@@ -31,8 +31,10 @@ const Navbar = () => {
           <div className="mx-2 font-medium">
             <a
               href="/"
-              className={`hover:text-sky-300 align-middle ${
-                location.pathname === "/" ? "text-sky-300" : "text-sky-600"
+              className={`hover:text-bright-blue align-middle ${
+                location.pathname === "/"
+                  ? "text-primary-blue"
+                  : "text-dark-600"
               }`}
             >
               Home
@@ -43,8 +45,10 @@ const Navbar = () => {
           <div className="mx-2 font-medium">
             <a
               href="/about"
-              className={`hover:text-sky-300 align-middle ${
-                location.pathname === "/about" ? "text-sky-300" : "text-sky-600"
+              className={`hover:text-bright-blue align-middle ${
+                location.pathname === "/about"
+                  ? "text-primary-blue"
+                  : "text-dark-600"
               }`}
             >
               About
@@ -66,21 +70,7 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            // Login & Sign Up
-            <div className="flex font-normal">
-              <Link
-                to="/login"
-                className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1"
-              >
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
-              >
-                Signup
-              </Link>
-            </div>
+            <div></div>
           )}
         </div>
       </div>

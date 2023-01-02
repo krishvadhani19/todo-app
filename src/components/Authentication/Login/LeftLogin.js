@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LightMailIcon from "components/icons/Light/mail";
+import BoldPasswordIcon from "components/icons/Bold/password";
 
 const LeftLogin = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -47,11 +49,13 @@ const LeftLogin = () => {
 
           {/* Login Label */}
           <div className="flex flex-row space-x-1">
-            <div className="text-5xl font-bold">Member Login</div>
+            <div className="text-5xl font-bold font-head-primary">
+              Member Login
+            </div>
             <span className="bg-primary-blue w-3 h-3 mt-8 rounded-lg"></span>
           </div>
 
-          {/* ALready Member */}
+          {/* Already Member */}
           <div className="flex space-x-2">
             <div className="text-lg text-dark-600 font-semibold">
               Create New Account?
@@ -66,36 +70,65 @@ const LeftLogin = () => {
         </div>
 
         {/* Input for email */}
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={credentials.email}
-          className="p-2 rounded-md w-full bg-slate-600 text-white"
-          placeholder="you@example.com"
-          onChange={onChange}
-          minLength={5}
-        ></input>
+        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+          {/* Input */}
+          <div className="flex flex-col w-full px-1">
+            {/* Label */}
+            <div className="text-bold text-sm text-slate-300">Email</div>
 
-        {/* Input for Login */}
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={credentials.password}
-          className="p-2 rounded-md w-full bg-slate-600 text-white"
-          placeholder="Enter Password"
-          onChange={onChange}
-          minLength={5}
-        ></input>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              value={credentials.email}
+              className="w-full bg-slate-800 text-lg text-white"
+              placeholder="you@example.com"
+              onChange={onChange}
+              minLength={5}
+              autocomplete="do-not-autofill"
+            />
+          </div>
+
+          {/* Mail Icon */}
+          <div className="my-auto">
+            <LightMailIcon size="30" color="#b2b2b2" />
+          </div>
+        </div>
+
+        {/* Input for email */}
+        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+          {/* Input */}
+          <div className="flex flex-col w-full px-1">
+            {/* Label */}
+            <div className="text-bold text-sm text-slate-300">Password</div>
+
+            {/* Input for Password */}
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={credentials.password}
+              className="w-full bg-slate-800 text-lg text-white"
+              placeholder="Enter Password"
+              onChange={onChange}
+              minLength={5}
+              autocomplete="do-not-autofill"
+            ></input>
+          </div>
+
+          {/* Mail Icon */}
+          <div className="my-auto">
+            <BoldPasswordIcon size="30" color="#b2b2b2" />
+          </div>
+        </div>
 
         {/* Submit Button */}
         <div
-          className="text-white hover:text-slate-900 hover:bg-sky-300 border-primary-blue hover:border-sky-300 border-2 rounded-md px-3 py-1 text-lg text-center inline-block"
+          className="text-white bg-primary-blue hover:bg-secondary-blue rounded-3xl px-3 py-2 text-xl text-center w-[30%]"
           onClick={handleSubmit}
           type="submit"
         >
-          Submit
+          Login
         </div>
       </label>
     </>
