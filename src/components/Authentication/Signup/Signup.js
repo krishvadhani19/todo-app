@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "components/Utils/Navbar";
+
+// importing files
+import Navbar from "components/Authentication/Navbar";
 import RightSignup from "components/Authentication/Signup/RightSignup";
 import LeftSignup from "components/Authentication/Signup/LeftSignup";
 

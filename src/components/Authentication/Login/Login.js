@@ -1,7 +1,9 @@
 import React from "react";
+
+// importing files
 import LeftLogin from "components/Authentication/Login/LeftLogin";
 import RightLogin from "components/Authentication/Login/RightLogin";
-import Navbar from "components/Utils/Navbar";
+import Navbar from "components/Authentication/Navbar";
 
 const Login = () => {
   return (

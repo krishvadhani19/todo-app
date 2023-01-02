@@ -8,14 +8,14 @@ const Tasks = () => {
   let navigate = useNavigate();
   const context = useContext(taskContext);
   const { tasks, getTasks, editTask, mode } = context;
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      // eslint-disable-next-line
-      getTasks();
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     // eslint-disable-next-line
+  //     getTasks();
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   const refClose = useRef(null);
   const ref = useRef(null);
