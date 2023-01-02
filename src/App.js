@@ -5,7 +5,7 @@ import About from "components/About";
 import Home from "components/Home";
 import TaskState from "context/tasks/TaskState";
 import Login from "components/Authentication/Login/Login";
-import Signup from "components/Authentication/Signup";
+import Signup from "components/Authentication/Signup/Signup";
 
 function App() {
   return (
