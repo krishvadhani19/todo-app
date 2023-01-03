@@ -1,19 +1,14 @@
+// importing modules
 const express = require("express");
 const router = express.Router();
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
+
+// importing files
 const fetchUser = require("../middleware/fetchUser");
-const Task = require("../models/Tasks");
+const taskController = require("../controllers/tasks");
 
 // ROUTE1: fetch all tasks no login required
-router.get("/fetchalltasks", fetchUser, async (req, res) => {
-  try {
-    const tasks = await Task.find({ user: req.user.id });
-    res.json(tasks);
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send("Internal Server Error!");
-  }
-});
+router.get("/fetchalltasks", fetchUser, taskController.getAllTasks);
 
 // ROUTE2: Addtask no login required
 router.post(
@@ -30,27 +25,7 @@ router.post(
       min: 5,
     }),
   ],
-  async (req, res) => {
-    try {
-      const { title, description } = req.body;
-      // if there are errors return bad request and the errors
-      const errors = validationResult(req);
-      if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-      }
-      const task = new Task({
-        title,
-        description,
-        user: req.user.id,
-      });
-
-      const savedTask = await task.save();
-      res.json(savedTask);
-    } catch (error) {
-      console.log(error.message);
-      res.status(500).send("Internal Server Error!");
-    }
-  }
+  taskController.addTask
 );
 
 // Route3: Edit a task no login required
@@ -63,61 +38,10 @@ router.put(
       min: 5,
     }),
   ],
-  async (req, res) => {
-    const { title, description } = req.body;
-    try {
-      const newTask = {};
-      if (title) {
-        newTask.title = title;
-      }
-      if (description) {
-        newTask.description = description;
-      }
-
-      // find task that has to be updated
-      let task = await Task.findById(req.params.id);
-      if (!task) {
-        return res.status(404).send("No such task found!");
-      }
-
-      // to check whether the task belongs to the same user
-      if (task.user.toString() !== req.user.id) {
-        return res.status(401).send("Not Allowed!");
-      }
-
-      task = await Task.findByIdAndUpdate(
-        req.params.id,
-        { $set: newTask },
-        { new: true }
-      );
-      res.json({ newTask });
-    } catch (error) {
-      console.log(error.message);
-      res.status(500).send("Internal Server Error!");
-    }
-  }
+  taskController.editTask
 );
 
 // Route4: Delete a Task no login required
-router.delete("/deletetask/:id", fetchUser, async (req, res) => {
-  try {
-    let task = await Task.findById(req.params.id);
-    // if task not found
-    if (!task) {
-      return res.status(404).send("Not Found!");
-    }
-
-    // Allow deletion only if user owns this task
-    if (task.user.toString() !== req.user.id) {
-      return res.status(401).send("Not Found!");
-    }
-
-    task = await Task.findByIdAndDelete(req.params.id);
-    res.json({ Success: "Task has been deleted!", task: task });
-  } catch (error) {
-    console.log(error.message);
-    res.status(500).send("Internal Server Error!");
-  }
-});
+router.delete("/deletetask/:id", fetchUser, taskController.deleteTask);
 
 module.exports = router;
