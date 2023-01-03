@@ -10,7 +10,6 @@ const TaskState = (props) => {
   // api call to fetch all tasks
   const getTasks = async () => {
     const response = await fetch(`${host}/api/tasks/fetchalltasks`, {
-      // mode: "no-cors",
       method: "GET",
       headers: {
         "auth-token": localStorage.getItem("token"),
@@ -45,7 +44,7 @@ const TaskState = (props) => {
       },
       body: JSON.stringify({ title, description }),
     });
-    const updateTask = await response.json();
+    await response.json();
 
     const newTasks = await JSON.parse(JSON.stringify(tasks));
 
@@ -62,7 +61,7 @@ const TaskState = (props) => {
 
   // api call to delete a task
   const deleteTask = async (id) => {
-    const response = await fetch(`${host}/api/tasks/deletetask/${id}`, {
+    await fetch(`${host}/api/tasks/deletetask/${id}`, {
       method: "DELETE",
       headers: {
         "auth-token": localStorage.getItem("token"),
