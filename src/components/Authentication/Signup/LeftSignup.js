@@ -173,7 +173,7 @@ const LeftSignup = () => {
 
       {/* Submit Button */}
       <div
-        className="text-white bg-secondary-blue hover:bg-primary-blue rounded-3xl px-3 py-2 text-xl text-center w-[30%]"
+        className="button text-center w-[30%]"
         onClick={handleSubmit}
         type="submit"
       >

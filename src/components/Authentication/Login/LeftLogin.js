@@ -124,7 +124,7 @@ const LeftLogin = () => {
 
         {/* Submit Button */}
         <div
-          className="text-white bg-primary-blue hover:bg-secondary-blue rounded-3xl px-3 py-2 text-xl text-center w-[30%]"
+          className="button text-center w-[30%]"
           onClick={handleSubmit}
           type="submit"
         >

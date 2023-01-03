@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import taskContext from "context/tasks/taskContext";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -57,7 +56,7 @@ const Navbar = () => {
         </div>
 
         {/* Login & Logout */}
-        {/* <div className="">
+        <div className="">
           {localStorage.getItem("token") ? (
             // Logout
             <div className="flex font-medium">
@@ -72,7 +71,7 @@ const Navbar = () => {
           ) : (
             <div></div>
           )}
-        </div> */}
+        </div>
       </div>
     </>
   );
