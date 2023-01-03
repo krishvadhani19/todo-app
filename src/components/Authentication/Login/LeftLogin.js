@@ -70,18 +70,18 @@ const LeftLogin = () => {
         </div>
 
         {/* Input for email */}
-        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+        <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0">
           {/* Input */}
           <div className="flex flex-col w-full px-1">
             {/* Label */}
-            <div className="text-bold text-sm text-slate-300">Email</div>
+            <div className="input-label">Email</div>
 
             <input
               type="text"
               id="email"
               name="email"
               value={credentials.email}
-              className="w-full bg-slate-800 text-lg text-white"
+              className="input-text"
               placeholder="you@example.com"
               onChange={onChange}
               minLength={5}
@@ -96,11 +96,11 @@ const LeftLogin = () => {
         </div>
 
         {/* Input for email */}
-        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+        <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0">
           {/* Input */}
           <div className="flex flex-col w-full px-1">
             {/* Label */}
-            <div className="text-bold text-sm text-slate-300">Password</div>
+            <div className="input-label">Password</div>
 
             {/* Input for Password */}
             <input
@@ -108,7 +108,7 @@ const LeftLogin = () => {
               id="password"
               name="password"
               value={credentials.password}
-              className="w-full bg-slate-800 text-lg text-white"
+              className="input-text"
               placeholder="Enter Password"
               onChange={onChange}
               minLength={5}

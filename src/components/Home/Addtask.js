@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import taskContext from "../../context/tasks/taskContext";
+import taskContext from "context/tasks/taskContext";
 
 const Addtask = () => {
   const context = useContext(taskContext);
@@ -18,38 +18,52 @@ const Addtask = () => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
   return (
-    <div className="bg-slate-900 p-2 flex justify-center">
-      <label className="my-3 p-3 shadow-lg rounded-lg bg-slate-800 block mx-6 w-full lg:w-2/3">
-        <div className="text-white font-bold text-5xl mb-4 text-center">
+    <div className="flex font-body-primary">
+      <label className="block w-2/3">
+        {/* Add Task */}
+        <div className="text-white font-bold text-5xl mb-4 text-center font-head-primary">
           Add Task
         </div>
-        <input
-          type="text"
-          className=" p-2 rounded-md mb-4 w-full bg-slate-600 text-white"
-          placeholder="Enter Title"
-          id="title"
-          name="title"
-          onChange={onChange}
-          minLength={5}
-          value={task.title}
-        />
-        <textarea
-          type="text"
-          className="p-2 rounded-md w-full h-36 bg-slate-600 text-white 
-          resize-none mb-4"
-          id="description"
-          name="description"
-          placeholder="Enter Description"
-          onChange={onChange}
-          value={task.description}
-          minLength={5}
-        />
-        <div
-          className="text-white hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 py-1block text-lg inline-block "
-          onClick={handleSubmit}
-          type="submit"
-        >
-          ADD +
+
+        <div className="flex flex-col space-y-5 p-2">
+          {/* Title */}
+          <div className="bg-dark-200 rounded-xl p-3">
+            <div className="input-label">Title</div>
+            <input
+              type="text"
+              className="input-text"
+              placeholder="Enter Title"
+              id="title"
+              name="title"
+              onChange={onChange}
+              minLength={5}
+              value={task.title}
+            />
+          </div>
+
+          {/* Text Area */}
+          <div className="bg-dark-200 rounded-xl p-3">
+            <div className="input-label">Description</div>
+            <textarea
+              type="text"
+              className="input-text h-32 resize-none"
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              onChange={onChange}
+              value={task.description}
+              minLength={5}
+            />
+          </div>
+
+          {/* Add Button */}
+          <div
+            className="button w-44 text-center"
+            onClick={handleSubmit}
+            type="submit"
+          >
+            ADD +
+          </div>
         </div>
       </label>
     </div>

@@ -66,18 +66,18 @@ const LeftSignup = () => {
       {/* First Name Last Name */}
       <div className="flex space-x-3">
         {/* First Name */}
-        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0 w-[50%]">
+        <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0 w-[50%]">
           {/* Input */}
           <div className="flex flex-col w-full px-1">
             {/* Label */}
-            <div className="text-bold text-sm text-slate-300">First Name</div>
+            <div className="input-label">First Name</div>
 
             <input
               type="text"
               id="fname"
               name="fname"
               value={credentials.fname}
-              className="w-full bg-slate-800 text-lg text-white"
+              className="input-text"
               placeholder="Yash"
               onChange={onChange}
               minLength={5}
@@ -92,18 +92,18 @@ const LeftSignup = () => {
         </div>
 
         {/* Last Name */}
-        <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0 w-[50%]">
+        <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0 w-[50%]">
           {/* Input */}
           <div className="flex flex-col w-full px-1">
             {/* Label */}
-            <div className="text-bold text-sm text-slate-300">Last Name</div>
+            <div className="input-label">Last Name</div>
 
             <input
               type="text"
               id="lname"
               name="lname"
               value={credentials.lname}
-              className="w-full bg-slate-800 text-lg text-white"
+              className="input-text"
               placeholder="Sharma"
               onChange={onChange}
               minLength={5}
@@ -119,18 +119,18 @@ const LeftSignup = () => {
       </div>
 
       {/* Input for email */}
-      <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+      <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0">
         {/* Input */}
         <div className="flex flex-col w-full px-1">
           {/* Label */}
-          <div className="text-bold text-sm text-slate-300">Email</div>
+          <div className="input-label">Email</div>
 
           <input
             type="text"
             id="email"
             name="email"
             value={credentials.email}
-            className="w-full bg-slate-800 text-lg text-white"
+            className="input-text"
             placeholder="you@example.com"
             onChange={onChange}
             minLength={5}
@@ -145,11 +145,11 @@ const LeftSignup = () => {
       </div>
 
       {/* Input for email */}
-      <div className="flex justify-between bg-slate-800 p-3 rounded-3xl space-y-0">
+      <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0">
         {/* Input */}
         <div className="flex flex-col w-full px-1">
           {/* Label */}
-          <div className="text-bold text-sm text-slate-300">Password</div>
+          <div className="input-label">Password</div>
 
           {/* Input for Password */}
           <input
@@ -157,7 +157,7 @@ const LeftSignup = () => {
             id="password"
             name="password"
             value={credentials.password}
-            className="w-full bg-slate-800 text-lg text-white"
+            className="input-text"
             placeholder="Enter Password"
             onChange={onChange}
             minLength={5}

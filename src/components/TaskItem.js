@@ -7,7 +7,7 @@ const TaskItem = (props) => {
   const { deleteTask } = context;
   const { task, refFunc } = props;
   return (
-    <div className="bg-slate-800 rounded-md flex w-[85%]  sm:w-[40%] lg:w-[25%] text-white p-3 m-5  justify-between border-4 border-sky-400">
+    <div className="bg-dark-200 rounded-md flex w-[85%]  sm:w-[40%] lg:w-[25%] text-white p-3 m-5  justify-between border-4 border-sky-400">
       <div className="flex flex-col justify-between w-[90%]">
         <div className=" text-2xl">{task.title}</div>
         <div className="w-full h-10">{task.description}</div>

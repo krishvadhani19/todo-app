@@ -43,7 +43,7 @@ select:focus {
   }
 
   .button {
-    @apply text-white bg-secondary-blue hover:bg-primary-blue rounded-3xl px-3 py-2 text-xl cursor-pointer;
+    @apply text-white bg-secondary-blue hover:bg-primary-blue rounded-3xl px-3 py-2 text-xl cursor-pointer drop-shadow-lg;
   }
 
   .inactive-route {
@@ -52,5 +52,13 @@ select:focus {
 
   .active-route {
     @apply text-white font-medium text-xl cursor-pointer;
+  }
+
+  .input-label {
+    @apply font-bold text-sm text-dark-600;
+  }
+
+  .input-text {
+    @apply w-full text-white text-lg bg-dark-200;
   }
 }
