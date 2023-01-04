@@ -4,21 +4,24 @@ const { Schema } = mongoose;
 
 const TasksSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectId,
-    ref: "user",
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
   },
   title: {
     type: String,
-    required: true,
+    required: [true, "A task must have a title"],
+    minLength: [5, "Title must be at the least 5 characters"],
   },
   description: {
     type: String,
-    required: true,
+    required: [true, "A user must have a description"],
+    minLength: [5, "Description must be at the least 5 characters"],
   },
   date: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
 });
 
-module.exports = mongoose.model("tasks", TasksSchema);
+const Task = mongoose.model("Task", TasksSchema);
+module.exports = Task;
