@@ -2,9 +2,13 @@
 const connectToMongo = require("./db");
 const app = require("./app");
 
+// Connecting to database
 connectToMongo();
-const port = 5000;
 
+// defining the port
+const port = process.env.PORT;
+
+// starting the app
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

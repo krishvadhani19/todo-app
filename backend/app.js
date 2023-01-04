@@ -17,6 +17,9 @@ app.use(cors());
 // to use request body
 app.use(express.json());
 
+// accessing static files using middleware
+app.use(express.static(""));
+
 // Routes Middleware
 app.use("/api/auth", userRouter);
 app.use("/api/tasks", taskRouter);
@@ -28,3 +31,5 @@ app.all("*", (req, res, next) => {
 
 // Global error handler to handle all kinds of error at one place
 app.use(globalErrorHandler);
+
+module.exports = app;
