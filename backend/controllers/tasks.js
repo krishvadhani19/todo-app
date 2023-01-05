@@ -17,12 +17,17 @@ exports.getAllTasks = catchAsyncError(async (req, res, next) => {
 
 // 2.Add Task
 exports.addTask = catchAsyncError(async (req, res, next) => {
+  // destructuring req.body
   const { title, description } = req.body;
+
+  // creating new task
   const task = await Task.create({
+    user: req.user.id,
     title: title,
     description: description,
-    user: req.user.id,
   });
+
+  console.log(task);
 
   res.status(201).json({
     status: "success",

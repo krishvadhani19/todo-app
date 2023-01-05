@@ -15,4 +15,5 @@ module.exports = (err, req, res, next) => {
 
   // sending development Error
   sendErrorDev(err, res);
+  next();
 };
