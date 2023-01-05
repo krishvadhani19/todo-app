@@ -37,15 +37,10 @@ exports.addTask = catchAsyncError(async (req, res, next) => {
 
 // 3.Edit Task
 exports.editTask = catchAsyncError(async (req, res, next) => {
-  const { title, description } = req.body;
-  const updatedTask = await Task.findByIdAndUpdate(
-    req.user.id,
-    {
-      title,
-      description,
-    },
-    { new: true }
-  );
+  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
   if (!updatedTask) {
     return next(new AppError("Data not found!", 404));
