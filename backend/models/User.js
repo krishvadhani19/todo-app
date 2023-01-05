@@ -42,7 +42,8 @@ let userSchema = new Schema({
 
 // Hashing the password before storing in the database
 userSchema.pre("save", async function (next) {
-  this.password = await bcrypt.hash(this.password, 10);
+  let salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 
   // delete the confirm password
   this.confirmPassword = undefined;
