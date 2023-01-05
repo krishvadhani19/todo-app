@@ -27,8 +27,7 @@ exports.addTask = catchAsyncError(async (req, res, next) => {
     description: description,
   });
 
-  console.log(task);
-
+  // sending response
   res.status(201).json({
     status: "success",
     data: task,
@@ -37,15 +36,18 @@ exports.addTask = catchAsyncError(async (req, res, next) => {
 
 // 3.Edit Task
 exports.editTask = catchAsyncError(async (req, res, next) => {
+  // find and update the task make sure you run the validator check
   const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
 
+  // if not found then new AppError
   if (!updatedTask) {
     return next(new AppError("Data not found!", 404));
   }
 
+  // sending response
   res.status(200).json({
     status: "success",
     data: updatedTask,
@@ -57,12 +59,12 @@ exports.deleteTask = catchAsyncError(async (req, res, next) => {
   // find the task
   const deletedTask = await Task.findByIdAndDelete(req.params.id);
 
-  console.log(deletedTask);
-
+  // if no task found
   if (!deletedTask) {
     return new AppError("Data not found!", 404);
   }
 
+  // return 204 means no response
   res.status(204).json({
     status: "success",
     data: deletedTask,
