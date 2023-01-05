@@ -3,9 +3,13 @@ const mongoose = require("mongoose");
 const mongoURI = "mongodb://localhost:27017/todoapp";
 
 const connectToMongo = () => {
-  mongoose.connect(mongoURI, () => {
-    console.log("Connected to mongo succesfully!");
-  });
+  mongoose
+    .connect(mongoURI, () => {
+      console.log("Connected to mongo succesfully!");
+    })
+    .catch((err) => {
+      console.log("Error!");
+    });
 };
 
 module.exports = connectToMongo;

@@ -1,40 +1,29 @@
 // importing files
 const User = require("../models/User");
-const bcrypt = require("bcryptjs");
 const AppError = require("../Utils/appError");
 
 // importing modules
-var jwt = require("jsonwebtoken");
 const catchAsyncError = require("../Utils/catchAsyncError");
-const jwtSecret = "KrishVadhani19";
 
 // 1. Create new user
 exports.createUser = catchAsyncError(async (req, res, next) => {
-  let user = await User.find({ email: req.body.email });
-  if (user) {
+  const { name, email, password, confirmPassword } = req.body;
+  const user = await User.find({ email });
+  if (Number.parseInt(user.length) !== 0) {
     return next(new AppError("User already exists!", 500));
   }
 
-  const salt = await bcrypt.genSalt(10);
-  const securedPassword = await bcrypt.hash(req.body.password, salt);
-
-  const newUser = User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: securedPassword,
+  console.log("itna chalu hai");
+  const newUser = await User.create({
+    name: name,
+    email: email,
+    password: password,
+    confirmPassword: confirmPassword,
   });
-
-  const data = {
-    user: {
-      id: req.user.id,
-    },
-  };
-  const authToken = jwt.sign(data, jwtSecret);
 
   res.status(201).json({
     status: "success",
     data: newUser,
-    authToken: authToken,
   });
 });
 

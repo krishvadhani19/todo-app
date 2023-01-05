@@ -17,9 +17,6 @@ app.use(cors());
 // to use request body
 app.use(express.json());
 
-// accessing static files using middleware
-app.use(express.static(""));
-
 // Routes Middleware
 app.use("/api/auth", userRouter);
 app.use("/api/tasks", taskRouter);

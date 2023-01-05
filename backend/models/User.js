@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
-const UserSchema = new Schema({
+let userSchema = new Schema({
   name: {
     type: String,
     required: [true, "A user must have a name"],
@@ -39,5 +40,14 @@ const UserSchema = new Schema({
   },
 });
 
-const User = mongoose.model("User", UserSchema);
+// Hashing the password before storing in the database
+userSchema.pre("save", async function (next) {
+  this.password = await bcrypt.hash(this.password, 10);
+
+  // delete the confirm password
+  this.confirmPassword = undefined;
+  next();
+});
+
+const User = mongoose.model("User", userSchema);
 module.exports = User;

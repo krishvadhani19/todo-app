@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const TasksSchema = new Schema({
+let tasksSchema = new Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
@@ -23,5 +23,5 @@ const TasksSchema = new Schema({
   },
 });
 
-const Task = mongoose.model("Task", TasksSchema);
+const Task = mongoose.model("Task", tasksSchema);
 module.exports = Task;

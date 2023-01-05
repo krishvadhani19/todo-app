@@ -6,7 +6,7 @@ const app = require("./app");
 connectToMongo();
 
 // defining the port
-const port = process.env.PORT;
+const port = 5000;
 
 // starting the app
 app.listen(port, () => {
