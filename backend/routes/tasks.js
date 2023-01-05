@@ -7,7 +7,7 @@ const fetchUser = require("../middleware/fetchUser");
 const taskController = require("../controllers/tasks");
 
 // ROUTE1: fetch all tasks no login required
-router.get("/fetchalltasks", fetchUser, taskController.getAllTasks);
+router.get("/getalltasks", fetchUser, taskController.getAllTasks);
 
 // ROUTE2: Addtask no login required
 router.post("/addtask", fetchUser, taskController.addTask);
