@@ -14,6 +14,8 @@ const fetchUser = (req, res, next) => {
   // verifying that a valid token is used or not
   if (req.headers.authtoken && req.headers.authtoken.startsWith("Bearer")) {
     token = req.headers.authtoken.split(" ")[1];
+  } else {
+    return next(new AppError("Please authenticate using valid token!", 401));
   }
 
   // verifying the jwt token

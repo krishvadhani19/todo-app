@@ -51,7 +51,7 @@ exports.editTask = catchAsyncError(async (req, res, next) => {
     return next(new AppError("Data not found!", 404));
   }
 
-  req.status(200).json({
+  res.status(200).json({
     status: "success",
     data: updatedTask,
   });
@@ -59,13 +59,16 @@ exports.editTask = catchAsyncError(async (req, res, next) => {
 
 // 4.Delete Task
 exports.deleteTask = catchAsyncError(async (req, res, next) => {
-  const deletedTask = await Task.findByIdAndDelete(req.user.id);
+  // find the task
+  const deletedTask = await Task.findByIdAndDelete(req.params.id);
+
+  console.log(deletedTask);
 
   if (!deletedTask) {
     return new AppError("Data not found!", 404);
   }
 
-  req.status(204).json({
+  res.status(204).json({
     status: "success",
     data: deletedTask,
   });
