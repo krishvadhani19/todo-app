@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useRef, useState, useEffect } from "react";
-import taskContext from "../context/tasks/TaskContext";
+import taskContext from "../../context/tasks/taskContext";
 import TaskItem from "./TaskItem";
 import { useNavigate } from "react-router-dom";
 

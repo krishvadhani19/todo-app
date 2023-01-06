@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "components/Utils/Navbar";
 import Addtask from "components/Home/Addtask";
+import TaskItem from "components/Tasks/TaskItem";
 
 const Home = () => {
   return (
@@ -11,12 +12,14 @@ const Home = () => {
       </div>
 
       {/* Add Task & All Tasks*/}
-      <div className="w-[88%] flex flex-col">
+      <div className="w-[88%] flex flex-col space-y-4">
         {/* Add Task */}
         <Addtask />
 
         {/* Tasks */}
-        <div></div>
+        <div>
+          <TaskItem />
+        </div>
       </div>
     </div>
   );

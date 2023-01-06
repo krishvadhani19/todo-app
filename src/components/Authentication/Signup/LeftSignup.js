@@ -171,6 +171,33 @@ const LeftSignup = () => {
         </div>
       </div>
 
+      {/* Input for email */}
+      <div className="flex justify-between bg-dark-200 p-3 rounded-3xl space-y-0">
+        {/* Input */}
+        <div className="flex flex-col w-full px-1">
+          {/* Label */}
+          <div className="input-label">Confirm Password</div>
+
+          {/* Input for Password */}
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={credentials.password}
+            className="input-text"
+            placeholder="Confirm Password"
+            onChange={onChange}
+            minLength={5}
+            autocomplete="do-not-autofill"
+          ></input>
+        </div>
+
+        {/* Mail Icon */}
+        <div className="my-auto">
+          <BoldPasswordIcon size="30" color="#b2b2b2" />
+        </div>
+      </div>
+
       {/* Submit Button */}
       <div
         className="button text-center w-[30%]"

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Person({
+export default function Mail({
   size = 18, // or any default size of your choice
   color = "black", // or any color of your choice
 }) {
@@ -9,17 +9,14 @@ export default function Person({
       width={size}
       height={size}
       fill="none"
-      stroke="currentColor"
+      stroke={color}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M4 20c0-3 4-3 6-5 1-1-2-1-2-6 0-3.333 1.333-5 4-5s4 1.667 4 5c0 5-3 5-2 6 2 2 6 2 6 5"
-        fill={color}
-      ></path>
+      <path d="M6 7v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M9 7a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v0H9Zm0 0h6-6Zm0 0H6h3Zm6 0h3-3Zm5 0h-2 2ZM4 7h2-2Z"></path>
     </svg>
   );
 }

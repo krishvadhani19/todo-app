@@ -1,13 +1,13 @@
 import React from "react";
 import { useContext, useEffect, useRef, useState } from "react";
-import taskContext from "./../context/tasks/taskContext";
+import taskContext from "../../context/tasks/taskContext";
 import TaskItem from "./TaskItem";
 import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
   let navigate = useNavigate();
   const context = useContext(taskContext);
-  const { tasks, getTasks, editTask, mode } = context;
+  const { tasks, getTasks, editTask } = context;
   // useEffect(() => {
   //   if (localStorage.getItem("token")) {
   //     // eslint-disable-next-line
@@ -74,11 +74,7 @@ const Tasks = () => {
               boxShadow: "2px 2px 10px",
             }}
           >
-            <div
-              className={`modal-content bg-${
-                mode === "dark" ? "dark" : "light"
-              }`}
-            >
+            <div className={`modal-content `}>
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                   Edit Task

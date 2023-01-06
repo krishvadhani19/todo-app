@@ -21,13 +21,13 @@ const Addtask = () => {
     <div className="flex font-body-primary">
       <label className="block w-2/3">
         {/* Add Task */}
-        <div className="text-white font-bold text-5xl mb-4 text-center font-head-primary">
+        <div className="text-white font-bold text-5xl my-2 text-center font-head-primary">
           Add Task
         </div>
 
         <div className="flex flex-col space-y-5 p-2">
           {/* Title */}
-          <div className="bg-dark-200 rounded-xl p-3">
+          <div className="bg-dark-200 rounded-xl p-4">
             <div className="input-label">Title</div>
             <input
               type="text"
@@ -42,7 +42,7 @@ const Addtask = () => {
           </div>
 
           {/* Text Area */}
-          <div className="bg-dark-200 rounded-xl p-3">
+          <div className="bg-dark-200 rounded-xl p-4">
             <div className="input-label">Description</div>
             <textarea
               type="text"

@@ -116,7 +116,7 @@ const LeftLogin = () => {
             ></input>
           </div>
 
-          {/* Mail Icon */}
+          {/* Password Icon */}
           <div className="my-auto">
             <BoldPasswordIcon size="30" color="#b2b2b2" />
           </div>

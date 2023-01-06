@@ -1,6 +1,6 @@
 import React from "react";
 import TaskContext from "./taskContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TaskState = (props) => {
   const host = "http://localhost:5000";
@@ -12,7 +12,7 @@ const TaskState = (props) => {
     const response = await fetch(`${host}/api/tasks/fetchalltasks`, {
       method: "GET",
       headers: {
-        "auth-token": localStorage.getItem("token"),
+        authtoken: localStorage.getItem("token"),
       },
     });
     const json = [await response.json()];
@@ -25,7 +25,7 @@ const TaskState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        authtoken: localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description }),
     });
@@ -40,7 +40,7 @@ const TaskState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        authtoken: localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description }),
     });
@@ -64,7 +64,7 @@ const TaskState = (props) => {
     await fetch(`${host}/api/tasks/deletetask/${id}`, {
       method: "DELETE",
       headers: {
-        "auth-token": localStorage.getItem("token"),
+        authtoken: localStorage.getItem("token"),
       },
     });
     const newTasks = tasks.filter((task) => {
