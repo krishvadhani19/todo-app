@@ -18,7 +18,7 @@ const Addtask = () => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
   return (
-    <div className="flex font-body-primary">
+    <div className="flex font-body-primary justify-center">
       <label className="block w-2/3">
         {/* Add Task */}
         <div className="text-white font-bold text-5xl my-2 text-center font-head-primary">

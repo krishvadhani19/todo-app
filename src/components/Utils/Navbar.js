@@ -15,7 +15,7 @@ const Navbar = () => {
     navigate("/login");
   };
   return (
-    <div className="flex flex-col justify-between h-full p-3">
+    <div className="flex flex-col bg-dark-200 rounded-xl justify-between p-3 h-[95%] fixed my-auto">
       {/* logo */}
       <Link
         to="/"
@@ -72,7 +72,7 @@ const Navbar = () => {
       {/* Logout */}
       <div className="button mx-auto">
         {localStorage.getItem("token") ? (
-          <Link to="/login" onClick={handleLogout}>
+          <Link to="/login" onClick={handleLogout} className="hover:text-white">
             Logout
           </Link>
         ) : (

@@ -12,11 +12,12 @@ const TaskState = (props) => {
     const response = await fetch(`${host}/api/tasks/getalltasks`, {
       method: "GET",
       headers: {
-        authtoken: localStorage.getItem("token"),
+        authtoken: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     const json = [await response.json()];
-    setTasks(json);
+
+    setTasks(json[0].data);
   };
 
   // api call to add a task
@@ -25,12 +26,12 @@ const TaskState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authtoken: localStorage.getItem("token"),
+        authtoken: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ title, description }),
     });
     const json = await response.json();
-    const newTasks = tasks.concat(json);
+    const newTasks = tasks.concat(json[0].data);
     setTasks(newTasks);
   };
 
@@ -40,11 +41,11 @@ const TaskState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        authtoken: localStorage.getItem("token"),
+        authtoken: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({ title, description }),
     });
-    await response.json();
+    await response.data;
 
     const newTasks = await JSON.parse(JSON.stringify(tasks));
 
@@ -64,7 +65,7 @@ const TaskState = (props) => {
     await fetch(`${host}/api/tasks/deletetask/${id}`, {
       method: "DELETE",
       headers: {
-        authtoken: localStorage.getItem("token"),
+        authtoken: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     const newTasks = tasks.filter((task) => {

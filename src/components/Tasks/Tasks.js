@@ -1,8 +1,8 @@
-import React from "react";
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import taskContext from "context/tasks/taskContext";
 import TaskItem from "components/Tasks/TaskItem";
 import { useNavigate } from "react-router-dom";
+import { v4 } from "uuid";
 
 const Tasks = () => {
   let navigate = useNavigate();
@@ -11,13 +11,13 @@ const Tasks = () => {
 
   // useEffect to get tasks
   useEffect(() => {
-    if (1) {
+    if (localStorage.getItem("token")) {
       // eslint-disable-next-line
-      // getTasks();
+      getTasks();
     } else {
       navigate("/login");
     }
-  });
+  }, []);
 
   const refClose = useRef(null);
   const ref = useRef(null);
@@ -25,7 +25,7 @@ const Tasks = () => {
   const refFunc = (taskItem) => {
     ref.current.click();
     setTask({
-      id: taskItem._id,
+      id: taskItem.id,
       title: taskItem.title,
       description: taskItem.description,
     });
@@ -54,7 +54,6 @@ const Tasks = () => {
         Your Tasks!
       </div>
 
-      {/*  */}
       <div>
         <div
           className="modal fade"
@@ -141,12 +140,14 @@ const Tasks = () => {
           </div>
         </div>
       </div>
-      <div className="row my-3">
-        <div className={`mx-2 ${tasks.length !== 0 ? "d-none" : ""}`}>
+
+      {/*  */}
+      <div className="grid grid-cols-3 gap-4">
+        <div className={`${tasks.length !== 0 ? "d-none" : ""}`}>
           {tasks.length === 0 && "No Tasks to display"}
         </div>
         {tasks.map((task) => {
-          return <TaskItem key={task._id} task={task} refFunc={refFunc} />;
+          return <TaskItem key={v4()} task={task} refFunc={refFunc} />;
         })}
       </div>
     </div>

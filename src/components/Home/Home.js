@@ -5,9 +5,9 @@ import Tasks from "components/Tasks/Tasks";
 
 const Home = () => {
   return (
-    <div className="h-screen bg-dark-100 font-body-primary p-3 flex space-x-6 w-screen">
+    <div className="min-h-screen bg-dark-100 font-body-primary p-3 flex space-x-6 relative">
       {/* Navbar */}
-      <div className="w-[10%] bg-dark-200 rounded-xl h-full my-auto">
+      <div className="w-[10%]">
         <Navbar />
       </div>
 
@@ -17,7 +17,7 @@ const Home = () => {
         <Addtask />
 
         {/* Tasks */}
-        <div>
+        <div className="w-full">
           <Tasks />
         </div>
       </div>

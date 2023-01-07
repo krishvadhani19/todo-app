@@ -9,19 +9,14 @@ const TaskItem = (props) => {
   const { task, refFunc } = props;
 
   return (
-    <div className="bg-dark-200 rounded-xl flex justify-between w-[23%] text-white p-3 h-44">
+    <div className="bg-dark-200 rounded-xl flex justify-between text-white p-3 h-44">
       {/* Title & Description */}
       <div className="flex flex-col space-y-2 w-[90%]">
         {/* Title */}
-        <div className=" text-2xl">Workout!</div>
+        <div className=" text-2xl">{task.title}</div>
 
         {/* description */}
-        <div className="w-full overflow-y-auto">
-          With Hooks, you can extract stateful logic from a component so it can
-          be tested independently and reused. Hooks allow you to reuse stateful
-          logic without changing your component hierarchy. This makes it easy to
-          share Hooks among many components or with the community.
-        </div>
+        <div className="w-full overflow-y-auto">{task.description}</div>
       </div>
 
       {/* edit and delete icon */}
