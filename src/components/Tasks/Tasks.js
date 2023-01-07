@@ -1,21 +1,23 @@
 import React from "react";
 import { useContext, useEffect, useRef, useState } from "react";
-import taskContext from "../../context/tasks/taskContext";
-import TaskItem from "./TaskItem";
+import taskContext from "context/tasks/taskContext";
+import TaskItem from "components/Tasks/TaskItem";
 import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
   let navigate = useNavigate();
   const context = useContext(taskContext);
   const { tasks, getTasks, editTask } = context;
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     // eslint-disable-next-line
-  //     getTasks();
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // }, []);
+
+  // useEffect to get tasks
+  useEffect(() => {
+    if (1) {
+      // eslint-disable-next-line
+      // getTasks();
+    } else {
+      navigate("/login");
+    }
+  });
 
   const refClose = useRef(null);
   const ref = useRef(null);
@@ -46,19 +48,14 @@ const Tasks = () => {
   };
 
   return (
-    <div className="container bg-slate-900 text-white">
-      <div className="text-5xl text-center font-bold">Your Tasks!</div>
-      <div>
-        <button
-          type="button"
-          className="btn btn-primary d-none"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          ref={ref}
-        >
-          Launch demo modal
-        </button>
+    <div className="bg-dark-100 text-white flex flex-col space-y-4 w-full">
+      {/* Heading */}
+      <div className="text-5xl text-center font-head-primary font-bold">
+        Your Tasks!
+      </div>
 
+      {/*  */}
+      <div>
         <div
           className="modal fade"
           id="exampleModal"

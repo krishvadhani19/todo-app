@@ -1,17 +1,9 @@
-import React, { useContext } from "react";
-import taskContext from "context/tasks/taskContext";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  let navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   let location = useLocation();
-  const context = useContext(taskContext);
-  const {} = context;
+
   return (
     <>
       <div className="flex justify-between text-xl bg-dark-100  px-5 py-3 w-full">
@@ -53,24 +45,6 @@ const Navbar = () => {
               About
             </a>
           </div>
-        </div>
-
-        {/* Login & Logout */}
-        <div className="">
-          {localStorage.getItem("token") ? (
-            // Logout
-            <div className="flex font-medium">
-              <Link
-                to="/login"
-                onClick={handleLogout}
-                className="text-sky-500 hover:text-slate-900 hover:bg-sky-300 border-sky-500 hover:border-sky-300 mx-2 border-2 rounded-md px-3 pb-1 "
-              >
-                Logout
-              </Link>
-            </div>
-          ) : (
-            <div></div>
-          )}
         </div>
       </div>
     </>

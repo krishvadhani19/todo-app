@@ -5,38 +5,64 @@ import BoldPasswordIcon from "components/icons/Bold/password";
 import LightContactIcon from "components/icons/Light/contact";
 
 const LeftSignup = () => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  // initialize the navigate variable
+  const navigate = useNavigate();
 
+  // state variable for credentials
+  const [credentials, setCredentials] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // onChange for any input field
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  // post request to signup
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch("http://localhost:5000/api/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        name: `${credentials.fname} ${credentials.lname}`,
         email: credentials.email,
         password: credentials.password,
+        confirmPassword: credentials.confirmPassword,
       }),
     });
     const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      setCredentials({ email: "", password: "" });
+
+    // response from the server after credential validation
+    if (json.status === "success") {
+      setCredentials({
+        fname: "",
+        lname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
       localStorage.setItem("token", json.authToken);
       navigate("/");
     } else {
-      navigate("/login");
+      navigate("/signup");
       alert("Invalid Credentials");
-      setCredentials({ email: "", password: "" });
+      setCredentials({
+        fname: "",
+        lname: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
     }
   };
 
-  const navigate = useNavigate();
   return (
     <label className="flex flex-col space-y-6 p-4 w-full mx-16 rounded-lg ">
       {/* Tagline */}
@@ -81,7 +107,7 @@ const LeftSignup = () => {
               placeholder="Yash"
               onChange={onChange}
               minLength={5}
-              autocomplete="do-not-autofill"
+              autoComplete="do-not-autofill"
             />
           </div>
 
@@ -107,7 +133,7 @@ const LeftSignup = () => {
               placeholder="Sharma"
               onChange={onChange}
               minLength={5}
-              autocomplete="do-not-autofill"
+              autoComplete="do-not-autofill"
             />
           </div>
 
@@ -134,7 +160,7 @@ const LeftSignup = () => {
             placeholder="you@example.com"
             onChange={onChange}
             minLength={5}
-            autocomplete="do-not-autofill"
+            autoComplete="do-not-autofill"
           />
         </div>
 
@@ -161,7 +187,7 @@ const LeftSignup = () => {
             placeholder="Enter Password"
             onChange={onChange}
             minLength={5}
-            autocomplete="do-not-autofill"
+            autoComplete="do-not-autofill"
           ></input>
         </div>
 
@@ -181,14 +207,14 @@ const LeftSignup = () => {
           {/* Input for Password */}
           <input
             type="password"
-            id="password"
-            name="password"
-            value={credentials.password}
+            id="confirmPassword"
+            name="confirmPassword"
+            value={credentials.confirmPassword}
             className="input-text"
             placeholder="Confirm Password"
             onChange={onChange}
             minLength={5}
-            autocomplete="do-not-autofill"
+            autoComplete="do-not-autofill"
           ></input>
         </div>
 

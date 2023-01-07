@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "components/Utils/Navbar";
 import Addtask from "components/Home/Addtask";
-import TaskItem from "components/Tasks/TaskItem";
+import Tasks from "components/Tasks/Tasks";
 
 const Home = () => {
   return (
-    <div className="h-screen bg-dark-100 font-body-primary p-3 flex space-x-6">
+    <div className="h-screen bg-dark-100 font-body-primary p-3 flex space-x-6 w-screen">
       {/* Navbar */}
-      <div className="w-[12%] bg-dark-200 rounded-xl h-full my-auto">
+      <div className="w-[10%] bg-dark-200 rounded-xl h-full my-auto">
         <Navbar />
       </div>
 
@@ -18,7 +18,7 @@ const Home = () => {
 
         {/* Tasks */}
         <div>
-          <TaskItem />
+          <Tasks />
         </div>
       </div>
     </div>

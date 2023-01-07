@@ -23,8 +23,9 @@ const LeftLogin = () => {
       }),
     });
     const json = await response.json();
-    console.log(json);
-    if (json.success) {
+
+    // response from the server if the credentials are true
+    if (json.status === "success") {
       setCredentials({ email: "", password: "" });
       localStorage.setItem("token", json.authToken);
       navigate("/");
@@ -85,7 +86,7 @@ const LeftLogin = () => {
               placeholder="you@example.com"
               onChange={onChange}
               minLength={5}
-              autocomplete="do-not-autofill"
+              autoComplete="do-not-autofill"
             />
           </div>
 
@@ -112,7 +113,7 @@ const LeftLogin = () => {
               placeholder="Enter Password"
               onChange={onChange}
               minLength={5}
-              autocomplete="do-not-autofill"
+              autoComplete="do-not-autofill"
             ></input>
           </div>
 

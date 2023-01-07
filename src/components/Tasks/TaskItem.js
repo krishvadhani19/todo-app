@@ -28,18 +28,17 @@ const TaskItem = (props) => {
       <div className="flex flex-col justify-between">
         <div
           className="cursor-pointer"
-
-          // onClick={() => {
-          //   refFunc(task);
-          // }}
+          onClick={() => {
+            refFunc(task);
+          }}
         >
           <LightEditIcon size="25" color="#ffffff" />
         </div>
         <div
           className="cursor-pointer"
-          // onClick={() => {
-          //   deleteTask(task._id, task.title, task.description);
-          // }}
+          onClick={() => {
+            deleteTask(task._id, task.title, task.description);
+          }}
         >
           <LightDeleteIcon size="25" color="#ffffff" />
         </div>

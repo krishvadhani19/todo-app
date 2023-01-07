@@ -1,6 +1,6 @@
 import React from "react";
 import TaskContext from "./taskContext";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const TaskState = (props) => {
   const host = "http://localhost:5000";
@@ -9,7 +9,7 @@ const TaskState = (props) => {
 
   // api call to fetch all tasks
   const getTasks = async () => {
-    const response = await fetch(`${host}/api/tasks/fetchalltasks`, {
+    const response = await fetch(`${host}/api/tasks/getalltasks`, {
       method: "GET",
       headers: {
         authtoken: localStorage.getItem("token"),
@@ -75,22 +75,6 @@ const TaskState = (props) => {
 
   // api call for login
 
-  // Toggle Mode
-  const [mode, setMode] = useState("dark");
-  const toggleMode = () => {
-    if (mode === "light") {
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "white";
-      document.title = "todoApp - Dark Mode";
-      setMode("dark");
-    } else {
-      document.title = "todoApp - Light Mode";
-      document.body.style.color = "black";
-      document.body.style.backgroundColor = "white";
-      setMode("light");
-    }
-  };
-
   return (
     <TaskContext.Provider
       value={{
@@ -99,8 +83,6 @@ const TaskState = (props) => {
         addTask,
         deleteTask,
         editTask,
-        toggleMode,
-        mode,
       }}
     >
       {props.children}
