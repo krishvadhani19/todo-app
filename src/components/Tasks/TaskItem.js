@@ -32,7 +32,7 @@ const TaskItem = (props) => {
         <div
           className="cursor-pointer"
           onClick={() => {
-            deleteTask(task._id, task.title, task.description);
+            deleteTask(task._id);
           }}
         >
           <LightDeleteIcon size="25" color="#ffffff" />

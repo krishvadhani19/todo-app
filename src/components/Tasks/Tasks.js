@@ -9,23 +9,13 @@ const Tasks = () => {
   const context = useContext(taskContext);
   const { tasks, getTasks, editTask } = context;
 
-  // useEffect to get tasks
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      // eslint-disable-next-line
-      getTasks();
-    } else {
-      navigate("/login");
-    }
-  }, []);
-
   const refClose = useRef(null);
   const ref = useRef(null);
 
   const refFunc = (taskItem) => {
     ref.current.click();
     setTask({
-      id: taskItem.id,
+      id: taskItem._id,
       title: taskItem.title,
       description: taskItem.description,
     });
@@ -39,9 +29,18 @@ const Tasks = () => {
 
   const handleClick = () => {
     editTask(task.id, task.title, task.description);
-    console.log(task.id);
     refClose.current.click();
   };
+
+  // useEffect to get tasks
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // eslint-disable-next-line
+      getTasks();
+    } else {
+      navigate("/login");
+    }
+  }, [getTasks, navigate]);
 
   const onChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });

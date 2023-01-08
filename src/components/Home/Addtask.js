@@ -38,6 +38,7 @@ const Addtask = () => {
               onChange={onChange}
               minLength={5}
               value={task.title}
+              required
             />
           </div>
 
@@ -53,6 +54,7 @@ const Addtask = () => {
               onChange={onChange}
               value={task.description}
               minLength={5}
+              required
             />
           </div>
 
