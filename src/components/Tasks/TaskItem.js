@@ -6,7 +6,7 @@ import LightDeleteIcon from "components/icons/Light/delete";
 const TaskItem = (props) => {
   const context = useContext(taskContext);
   const { deleteTask } = context;
-  const { task, refFunc } = props;
+  const { task, updateTask } = props;
 
   return (
     <div className="bg-dark-200 rounded-xl flex justify-between text-white p-3 h-44">
@@ -24,7 +24,7 @@ const TaskItem = (props) => {
         <div
           className="cursor-pointer"
           onClick={() => {
-            refFunc(task);
+            updateTask(task);
           }}
         >
           <LightEditIcon size="25" color="#ffffff" />

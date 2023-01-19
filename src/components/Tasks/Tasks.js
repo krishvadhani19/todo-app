@@ -13,22 +13,13 @@ const Tasks = () => {
   const refClose = useRef(null);
   const ref = useRef(null);
 
-  const refFunc = (taskItem) => {
-    ref.current.click();
-    setTask({
-      id: taskItem._id,
-      title: taskItem.title,
-      description: taskItem.description,
-    });
-  };
-
   const [task, setTask] = useState({
     id: "",
     title: "",
     description: "",
   });
 
-  const handleClick = () => {
+  const handleEditClick = () => {
     editTask(task.id, task.title, task.description);
     refClose.current.click();
   };
@@ -47,8 +38,17 @@ const Tasks = () => {
     setTask({ ...task, [e.target.name]: e.target.value });
   };
 
+  const updateTask = (taskItem) => {
+    ref.current.click();
+    setTask({
+      id: taskItem._id,
+      title: taskItem.title,
+      description: taskItem.description,
+    });
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-full font-body-primary">
       {/* AddTask */}
       <div>
         <Addtask task={task} setTask={setTask} />
@@ -61,88 +61,97 @@ const Tasks = () => {
           Your Tasks!
         </div>
 
-        <div>
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog"
-              style={{
-                borderRadius: "5px",
-                padding: "20px",
-                boxShadow: "2px 2px 10px",
-              }}
-            >
-              <div className={`modal-content `}>
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">
-                    Edit Task
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
+        <button
+          ref={ref}
+          type="button"
+          className="btn btn-primary d-none"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Launch demo modal
+        </button>
 
-                <div className="modal-body">
-                  {/* Modal Body */}
-                  <form>
-                    <div className="mb-3">
-                      <label htmlFor="title" className="form-label">
-                        Title
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="title"
-                        name="title"
-                        value={task.title}
-                        onChange={onChange}
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="description" className="form-label">
-                        Description
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="description"
-                        name="description"
-                        value={task.description}
-                        onChange={onChange}
-                        required
-                      />
-                    </div>
-                  </form>
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    ref={refClose}
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    disabled={
-                      task.title.length < 5 || task.description.length < 5
-                    }
-                    onClick={handleClick}
-                  >
-                    Save changes
-                  </button>
-                </div>
+        {/* Edit Task */}
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content bg-dark-100">
+              <div className="modal-header">
+                <h5
+                  className="modal-title text-2xl font-head-primary"
+                  id="exampleModalLabel"
+                >
+                  Edit Note
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <form className="my-3 flex flex-col space-y-5">
+                  <div className="bg-dark-200 p-2 rounded-lg">
+                    <label htmlFor="title" className="text-lg input-label">
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      className="input-text text-xl"
+                      id="title"
+                      name="title"
+                      value={task.title}
+                      aria-describedby="emailHelp"
+                      onChange={onChange}
+                      minLength={5}
+                      required
+                    />
+                  </div>
+                  <div className="bg-dark-200 p-2 rounded-lg">
+                    <label
+                      htmlFor="description"
+                      className="input-label text-lg"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      type="text"
+                      className="input-text text-xl resize-y max-h-28 overflow-y-auto"
+                      id="description"
+                      name="description"
+                      value={task.description}
+                      onChange={onChange}
+                      minLength={5}
+                      required
+                    />
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button
+                  ref={refClose}
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  disabled={
+                    task.title.length < 5 || task.description.length < 5
+                  }
+                  onClick={handleEditClick}
+                  type="button"
+                  className="btn btn-primary"
+                >
+                  Update Note
+                </button>
               </div>
             </div>
           </div>
@@ -154,7 +163,7 @@ const Tasks = () => {
             {tasks.length === 0 && "No Tasks to display"}
           </div>
           {tasks.map((task) => {
-            return <TaskItem key={v4()} task={task} refFunc={refFunc} />;
+            return <TaskItem key={v4()} task={task} updateTask={updateTask} />;
           })}
         </div>
       </div>

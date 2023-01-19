@@ -55,10 +55,10 @@ select:focus {
   }
 
   .input-label {
-    @apply font-bold text-sm text-dark-600;
+    @apply font-bold text-sm text-dark-600 focus:outline-none;
   }
 
   .input-text {
-    @apply w-full text-white text-lg bg-dark-200;
+    @apply w-full text-white text-lg bg-dark-200 focus:outline-none;
   }
 }

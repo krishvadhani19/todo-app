@@ -11,7 +11,7 @@ const Addtask = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task.title, task.description);
-    setTask({ title: "", description: "" });
+    setTask({ id: "", title: "", description: "" });
   };
 
   const onChange = (e) => {
