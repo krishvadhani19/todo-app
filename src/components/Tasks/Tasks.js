@@ -21,18 +21,13 @@ const Tasks = () => {
 
   const handleEditClick = () => {
     editTask(task.id, task.title, task.description);
+    setTask({
+      id: "",
+      title: "",
+      description: "",
+    });
     refClose.current.click();
   };
-
-  // useEffect to get tasks
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      // eslint-disable-next-line
-      getTasks();
-    } else {
-      navigate("/login");
-    }
-  }, [task]);
 
   const onChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
@@ -46,6 +41,16 @@ const Tasks = () => {
       description: taskItem.description,
     });
   };
+
+  // useEffect to get tasks
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      // eslint-disable-next-line
+      getTasks();
+    } else {
+      navigate("/login");
+    }
+  }, [task]);
 
   return (
     <div className="w-full font-body-primary">
@@ -137,7 +142,7 @@ const Tasks = () => {
                 <button
                   ref={refClose}
                   type="button"
-                  className="btn btn-secondary"
+                  className="button"
                   data-bs-dismiss="modal"
                 >
                   Close
@@ -148,9 +153,9 @@ const Tasks = () => {
                   }
                   onClick={handleEditClick}
                   type="button"
-                  className="btn btn-primary"
+                  className="btn button"
                 >
-                  Update Note
+                  Update Task
                 </button>
               </div>
             </div>
